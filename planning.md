@@ -1,10 +1,10 @@
-# Installation
+# Preparation of VM
 
 Install EPICS, synApps,GUIs, Bluesky and related components
 to create an APS beam line simulator for training, education,
 and development related to APS-U.
 
-- [Installation](#installation)
+- [Preparation of VM](#preparation-of-vm)
   - [VirtualBox VM](#virtualbox-vm)
   - [First steps after operating system installation](#first-steps-after-operating-system-installation)
   - [Install Editors](#install-editors)
@@ -289,14 +289,14 @@ sudo apt-get install -y  \
 
 export ENV HASH=R6-2
 export MOTOR_HASH=R7-2-2
-export AD_HASH=master
+export AD_HASH=R3-10
 export CAPUTRECORDER_HASH=master
 
 export SYNAPPS="${EPICS_ROOT}/synApps"
 export SUPPORT="${SYNAPPS}/support"
 export PATH="${PATH}:${SUPPORT}/utils"
 
-export AD=${SUPPORT}/areaDetector-${AD_HASH}
+export AREA_DETECTOR=${SUPPORT}/areaDetector-${AD_HASH}
 export MOTOR=${SUPPORT}/motor-${MOTOR_HASH}
 export XXX=${SUPPORT}/xxx-R6-2
 export CAPUTRECORDER=${SUPPORT}/caputRecorder-${CAPUTRECORDER_HASH}
@@ -405,16 +405,67 @@ EOF
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 cat > ./.edit_area_detector.sh << EOF
+#!/bin/bash
+
+# file: recommended_AD_edits.sh
+# Purpose: recommended edits:
+#    https://areadetector.github.io/master/install_guide.html
+
+pushd ${AREA_DETECTOR}/configure
+cp EXAMPLE_RELEASE.local         RELEASE.local
+cp EXAMPLE_RELEASE_LIBS.local    RELEASE_LIBS.local
+cp EXAMPLE_RELEASE_PRODS.local   RELEASE_PRODS.local
+cp EXAMPLE_CONFIG_SITE.local     CONFIG_SITE.local
+
+sed -i s:'SUPPORT=/corvette/home/epics/devel':'SUPPORT=${SUPPORT}':g RELEASE_LIBS.local
+sed -i s:'areaDetector-3-10':'areaDetector-${AD_HASH}':g RELEASE_LIBS.local
+sed -i s:'asyn-4-41':'asyn-R4-41':g RELEASE_LIBS.local
+sed -i s:'EPICS_BASE=/corvette/usr/local/epics-devel/base-7.0.4':'EPICS_BASE=${EPICS_BASE_ROOT}':g RELEASE_LIBS.local
+
+sed -i s:'areaDetector-3-10':'areaDetector-${AD_HASH}':g RELEASE_PRODS.local
+sed -i s:'asyn-4-41':'asyn-R4-41':g RELEASE_PRODS.local
+sed -i s:'autosave-5-10':'autosave-R5-10-2':g RELEASE_PRODS.local
+sed -i s:'busy-1-7-2':'busy-R1-7-3':g RELEASE_PRODS.local
+sed -i s:'calc-3-7-3':'calc-R3-7-4':g RELEASE_PRODS.local
+sed -i s:'devIocStats-3-1-16':'iocStats-3-1-16':g RELEASE_PRODS.local
+sed -i s:'EPICS_BASE=/corvette/usr/local/epics-devel/base-7.0.4':'EPICS_BASE=${EPICS_BASE_ROOT}':g RELEASE_PRODS.local
+sed -i s:'seq-2-2-5':'seq-2-2-8':g RELEASE_PRODS.local
+sed -i s:'sscan-2-11-3':'sscan-R2-11-4':g RELEASE_PRODS.local
+sed -i s:'SUPPORT=/corvette/home/epics/devel':'SUPPORT=${SUPPORT}':g RELEASE_PRODS.local
+
+# CONFIG_SITE.local -- no edits
+
+sed -i s:'#ADSIMDETECTOR=':'ADSIMDETECTOR=':g RELEASE.local
+sed -i s:'#ADURL=':'ADURL=':g RELEASE.local
+sed -i s:'#PVADRIVER=':'PVADRIVER=':g RELEASE.local
+popd
+
+pushd ${AREA_DETECTOR}/ADCore/iocBoot
+cp EXAMPLE_commonPlugins.cmd                                commonPlugins.cmd
+cp EXAMPLE_commonPlugin_settings.req                        commonPlugin_settings.req
+sed -i s:'#NDPvaConfigure':'NDPvaConfigure':g               commonPlugins.cmd
+sed -i s:'#dbLoadRecords("NDPva':'dbLoadRecords("NDPva':g   commonPlugins.cmd
+sed -i s:'#startPVAServer':'startPVAServer':g               commonPlugins.cmd
+popd
 EOF
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 bash ./.edit_assemble_synApps.sh 2>&1 | tee edit_assemble.log
 
-# FIXME: ADSupport needs to be cloned from master
-
 bash ./assemble_synApps.sh 2>&1 | tee assemble.log
 
 cd ${SUPPORT}
+
+# ADSupport needs to use master branch
+pushd ${AREA_DETECTOR}/ADSupport
+git checkout master
+git pull
+# AREA_DETECTOR, too
+cd ..
+git checkout master
+git pull
+popd
+
 make -j4 release rebuild 2>&1 | tee build.log
 echo "# --- Building XXX IOC ---" 2>&1 | tee -a build.log
 make -C ${IOCXXX}/ 2>&1 | tee -a build.log
