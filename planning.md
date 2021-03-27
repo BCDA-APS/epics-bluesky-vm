@@ -16,6 +16,9 @@ and development related to APS-U.
     - [test EPICS base installation](#test-epics-base-installation)
   - [EPICS synApps](#epics-synapps)
   - [EPICS GUIs](#epics-guis)
+    - [MEDM](#medm)
+    - [Qt5 library, Qt designer, & Qwt library](#qt5-library-qt-designer--qwt-library)
+    - [caQtDM](#caqtdm)
   - [Bluesky](#bluesky)
     - [Docker](#docker)
     - [MongoDB](#mongodb)
@@ -85,7 +88,26 @@ sudo apt-get update  -y && sudo apt-get upgrade -y
 
 ```sh
 sudo apt-get install -y nano vim
+```
 
+It might be necessary to add code to `~/.bashrc` to call `~/.bash_aliases` since some distributions do not include this part:
+
+```sh
+cat >> ~/.bashrc << EOF
+# - - - - - - - - -
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+EOF
+
+Now, proceed to build or extend `~/.bash_aliases`:
+
+```sh
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 cat >> ~/.bash_aliases << EOF
 export EDITOR=nano
@@ -473,6 +495,198 @@ make -C ${IOCXXX}/ 2>&1 | tee -a build.log
 
 ## EPICS GUIs
 
+```sh
+sudo apt install -y \
+    libxt-dev libxft-dev \
+    libmotif-common libmotif-dev \
+    libxmu-headers libxmu-dev \
+    gitk git-gui
+
+cd ${EPICS_ROOT}
+git clone https://github.com/epics-extensions/extensions ./opi
+ln -s ./opi extensions
+
+# # tools to discover what package provides libXm.a, needed for MEDM build
+# sudo apt install apt-file
+# sudo apt-file update
+# apt-file search "libXm.a"
+
+sed -i \
+    s:'MOTIF_LIB=/usr/lib64':'MOTIF_LIB=/usr/lib/x86_64-linux-gnu/':g \
+    configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64
+sed -i \
+    s:'X11_LIB=/usr/lib64':'X11_LIB=/usr/lib/x86_64-linux-gnu/':g \
+    configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+cat >> ~/.bash_aliases << EOF
+export EPICS_EXT=\${EPICS_ROOT}/opi
+export EPICS_EXT_BIN=\${EPICS_EXT}/bin/\${EPICS_HOST_ARCH}
+export EPICS_EXT_LIB=\${EPICS_EXT}/lib/\${EPICS_HOST_ARCH}
+export PATH=\${PATH}:\${EPICS_EXT_BIN}
+EOF
+export EPICS_EXT=${EPICS_ROOT}/opi
+export EPICS_EXT_BIN=${EPICS_EXT}/bin/${EPICS_HOST_ARCH}
+export EPICS_EXT_LIB=${EPICS_EXT}/lib/${EPICS_HOST_ARCH}
+export PATH=${PATH}:${EPICS_EXT_BIN}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+```
+
+### MEDM
+
+MEDM is available from GitHub.  It needs various out of date packages.
+Notably, `libXp` is [now obsolete and not available in modern Ubuntu repositories.](https://askubuntu.com/questions/1318350/i-cannot-find-the-library-libxp-so-6-for-ubuntu-20-04)  Download it from Debian Jessie repository and install by terminal.
+
+```sh
+cd ${EPICS_EXT}/src
+git clone https://github.com/epics-extensions/medm
+
+# libXp not available and can be removed
+sed -i \
+    s:'USR_LIBS_Linux = Xm Xt Xp Xmu X11 Xext':'USR_LIBS_Linux = Xm Xt Xmu X11 Xext':g \
+    medm/medm/Makefile
+
+cd ..
+make -j4  2>&1 | tee build.log
+
+# fonts
+cd ${EPICS_EXT}
+cat > ./medm_fonts.alias << EOF
+! MEDM widget font aliases
+!
+! add to /usr/X11R6/lib/X11/fonts/misc/fonts.alias
+!     or /usr/share/fonts/X11/misc/fonts.alias
+!
+widgetDM_4	5x7
+widgetDM_6	widgetDM_4
+widgetDM_8	5x8
+widgetDM_10	widgetDM_8
+widgetDM_12	6x10
+widgetDM_14	6x12
+widgetDM_16	7x14
+widgetDM_18	widgetDM_16
+widgetDM_20	8x16
+widgetDM_22	widgetDM_20
+widgetDM_24	10x20
+widgetDM_30	widgetDM_24
+widgetDM_36	12x24
+widgetDM_40	widgetDM_36
+widgetDM_48	widgetDM_40
+widgetDM_60	widgetDM_48
+EOF
+
+cat \
+    /usr/share/fonts/X11/misc/fonts.alias \
+    ./medm_fonts.alias > \
+    /tmp/fonts.alias
+sudo cp /tmp/fonts.alias /usr/share/fonts/X11/misc/fonts.alias
+```
+
+### Qt5 library, Qt designer, & Qwt library
+
+Need [Qt](https://wiki.qt.io/Install_Qt_5_on_Ubuntu),
+[Qwt](https://qwt.sourceforge.io/qwtinstall.html), and related
+libraries.  (Might not need all this but kept growing the list until Qwt
+compiled with no errors.)
+
+```sh
+sudo apt install -y \
+    build-essential \
+    libfontconfig1 \
+    libglu1-mesa-dev \
+    libqt5svg5 \
+    libqt5svg5-dev \
+    libqt5x11extras5-dev \
+    libqwt-qt5-dev \
+    mesa-common-dev \
+    qt5-default \
+    qt5-qmake \
+    qttools5-dev \
+    qttools5-dev-tools
+
+cd /usr/lib
+sudo ln -s libqwt-qt5.so ./libqwt.so
+```
+
+### caQtDM
+
+```sh
+cd ${EPICS_EXT}/src
+
+git clone https://github.com/caqtdm/caqtdm.git
+cd ./caqtdm/
+
+cat > ./setup_environment.sh << EOF
+#!/bin/bash
+
+# usage:  source ./setup_environment.sh
+
+# sets up the shell for building caQtDM
+# makes certain that Anaconda Python is not providing Qt to the build
+
+PATH=\${HOME}/bin
+PATH+=:/usr/local/sbin
+PATH+=:/usr/local/bin
+PATH+=:/usr/sbin
+PATH+=:/usr/bin
+PATH+=:/sbin
+PATH+=:/bin
+#PATH+=:/usr/games
+#PATH+=:/usr/local/games
+PATH+=:/usr/local/epics/base/bin/
+PATH+=:/usr/local/epics/base/lib/
+PATH+=:/usr/local/epics/opi/bin/
+PATH+=:/usr/local/epics/base/bin/linux-x86_64
+PATH+=:/usr/local/epics/base/lib/linux-x86_64
+PATH+=:/usr/local/epics/opi/bin/linux-x86_64
+export PATH
+
+export PYTHONVERSION=3.8
+export PYTHONINCLUDE=/usr/include/python\${PYTHONVERSION}
+export PYTHONLIB=/usr/lib/
+
+export EPICS_BASE=/usr/local/epics/base
+export EPICSINCLUDE=\${EPICS_BASE}/include
+export EPICSLIB=\${EPICS_BASE}/lib/$EPICS_HOST_ARCH
+#export EPICSEXTENSIONS=/usr/local/epics/extensions
+export EPICSEXTENSIONS=/usr/local/epics/opi
+
+export QTHOME=/usr
+export QWTHOME=/usr
+export QWTINCLUDE=/usr/include/qwt
+export QWTLIB=\${QWTHOME}/lib/qwt
+
+export QTCONTROLS_LIBS=`pwd`/caQtDM_Binaries
+export CAQTDM_COLLECT=`pwd`/caQtDM_Binaries
+export QTBASE=\${QTCONTROLS_LIBS}
+
+export QTDM_LIBINSTALL=\${EPICSEXTENSIONS}/lib/\${EPICS_HOST_ARCH}
+export QTDM_BININSTALL=\${EPICSEXTENSIONS}/bin/\${EPICS_HOST_ARCH}
+
+mkdir -p \${QTDM_BININSTALL}
+mkdir -p \${QTDM_LIBINSTALL}
+
+#export QTDM_RPATH=\${QTDM_LIBINSTALL}:\${QTBASE}
+EOF
+chmod +x ./setup_environment.sh
+source ./setup_environment.sh
+
+# remove manual interaction from shell scripts
+sed -i s:'read -p ':'# read -p ':g ./caQtDM_BuildAll
+sed -i s:'read -p ':'# read -p ':g ./caQtDM_CleanAll
+sed -i s:'read -p ':'# read -p ':g ./caQtDM_Install
+
+sudo apt install -y libpython3.8-dev
+
+bash ./caQtDM_BuildAll 2>&1 | tee -a build.log
+bash ./caQtDM_Install 2>&1 | tee -a install.log
+
+cat >> ~/.bash_aliases << EOF
+export QT_PLUGIN_PATH=${EPICS_EXT}/lib/linux-x86_64
+EOF
+```
+
 ## Bluesky
 
 ### Docker
@@ -480,16 +694,69 @@ make -C ${IOCXXX}/ 2>&1 | tee -a build.log
 ```sh
 sudo apt-get install -y docker.io
 sudo usermod -a -G docker ${USER}
+
+mkdir -p ~/bin
+cd ~/bin
+url=https://raw.githubusercontent.com/prjemian/epics-docker/master
+wget ${url}/n3_synApps/start_xxx.sh
+wget ${url}/n4_areaDetector/start_adsim.sh
+wget ${url}/n3_synApps/remove_container.sh
+chmod +x start_xxx.sh start_adsim.sh remove_container.sh
+
+cat >> ./start_iocs.sh << EOF
+~/bin/start_xxx.sh gp
+~/bin/start_adsim.sh ad
+EOF
+chmod +x ./start_iocs.sh
+```
+
+TODO: need a cron job (& script) to launch the IOCs on bootup
+
+**Reboot the VM**
+
+To allow the user account to start the EPICS IOCs in docker, it is necessary
+to either logout and log back in again or restart the VM.
+
+```sh
+sudo /sbin/shutdown -r now
 ```
 
 ### MongoDB
 
 ```sh
 sudo apt-get install -y mongodb
+
+# TODO: intake YAML configuration file
 ```
 
 ### Python
 
+```sh
+mkdir -p ~/Apps
+cd ~/Downloads
+wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/Apps/miniconda3
+```
+
 ### Conda environment
 
+```sh
+cd ~/Apps
+wget https://raw.githubusercontent.com/BCDA-APS/use_bluesky/main/install/environment_2021_1.yml
+source ~/Apps/miniconda3/bin/activate
+conda init
+conda env create -f ~/Apps/environment_2021_1.yml
+conda env list
+
+cat >> ~/.bash_aliases << EOF
+export BLUESKY_ENV=bluesky_2021_1
+alias become_bluesky='conda activate ${BLUESKY_ENV}'
+EOF
+```
+
 ### `instrument` package
+
+```sh
+cd ~
+git clone https://github.com/BCDA-APS/bluesky_instrument_training ./bluesky
+```
