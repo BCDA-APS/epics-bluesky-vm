@@ -25,6 +25,7 @@ and development related to APS-U.
     - [Python](#python)
     - [Conda environment](#conda-environment)
     - [`instrument` package](#instrument-package)
+  - [Reboot](#reboot)
 
 ## VirtualBox VM
 
@@ -35,7 +36,7 @@ Type | Linux
 Version | Ubuntu (64-bit)
 RAM | 2048 MB
 Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
-Download URL | https://linuxmint.com/edition.php?id=285
+Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
 VDI Size | 30 GB
 Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
 Your name | APSU EPICS beam line Bluesky Simulator
@@ -61,18 +62,13 @@ Installation proceeds to completion.
 2. Unmount the installation disk from (virtual) Optical Drive: *Devices* menu: *Optical Drives*: remove disk from virtual drive
 3. Press `Enter` key to restart
 
-TODO: install the VBox Guest Additions then restart (enables resizing
-the VM window and can enable copy&paste between VM and host)
-
-* *Devices* menu: *Shared Clipboard*: *Bidirectional*
-
 ## First steps after operating system installation
 
 TODO: complete the steps suggested by the welcome wizard
 
 TODO: install the VBox Guest Additions then restart
 
-* Deactivate screen lock from screen saver (since the VM's host policies
+- *Devices* menu: *Shared Clipboard*: *Bidirectional** Deactivate screen lock from screen saver (since the VM's host policies
   can cover that security aspect)
 
 After installing the Ubuntu-derivative operating, this command updates
@@ -110,13 +106,13 @@ fi
 EOF
 fi
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 cat >> ~/.bash_aliases << EOF
 export EDITOR=nano
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ```
 
+<!--
 Install VSCode GUI editor
 
 ```sh
@@ -134,12 +130,12 @@ tar xzf ~/Downloads/${CODE_ARCHIVE}
 cd ../bin
 ln -s ../Apps/VSCode-linux-x64/bin/code ./
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 cat >> ~/.bash_aliases << EOF
 export PATH=${HOME}/bin:\${PATH}
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ```
+ -->
 
 ## EPICS base
 
@@ -151,13 +147,14 @@ Next, install packages needed for building EPICS base.  Includes editor tools.
 sudo apt-get install -y \
     apt-utils \
     build-essential \
-    libreadline-dev
+    libreadline-dev \
+    screen
 ```
 
 ### Environment variables
 
 ```sh
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 cat >> ~/.bash_aliases << EOF
 export EPICS_ROOT=/usr/local/epics
 export EPICS_BASE_NAME=base-7.0.5
@@ -165,7 +162,7 @@ export EPICS_HOST_ARCH=linux-x86_64
 export EPICS_BASE_ROOT=\${EPICS_ROOT}/\${EPICS_BASE_NAME}
 export PATH=\${PATH}:\${EPICS_BASE_ROOT}/bin/\${EPICS_HOST_ARCH}
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ```
 
 ### Create directory for EPICS
@@ -199,7 +196,7 @@ First, create a test database for EPICS.  This describes the PVs to test.
 ```sh
 cd ~
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 cat > ~/Documents/demo.db << EOF
 # demo.db
 # Demonstration database for use with EPICS base application: softIoc
@@ -218,14 +215,14 @@ record(bo, "\$(IOC=softIoc_demo:)bo")
 record(longout, "\$(IOC=softIoc_demo:)longout")
 record(stringout, "\$(IOC=softIoc_demo:)stringout")
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ```
 
 Test the `softIoc` works:
 
 Start the soft IOC: `softIoc -d ~/Documents/demo.db`
 
-```
+```sh
 ~$ softIoc -d ~/Documents/demo.db
 apsu@apsu-beamline-simulator:~$ softIoc -d ~/Documents/demo.db
 Starting iocInit
@@ -239,7 +236,7 @@ epics>
 
 List all the PVs in the database: `dbl`
 
-```
+```sh
 epics> dbl
 softIoc_demo:longout
 softIoc_demo:ao
@@ -250,7 +247,7 @@ epics>
 
 Exit the soft IOC: `exit`
 
-```
+```sh
 epics> exit
 apsu@apsu-beamline-simulator:~$
 ```
@@ -326,18 +323,18 @@ export XXX=${SUPPORT}/xxx-R6-2
 export CAPUTRECORDER=${SUPPORT}/caputRecorder-${CAPUTRECORDER_HASH}
 export IOCXXX=${XXX}/iocBoot/iocxxx
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 cat >> ~/.bash_aliases << EOF
 export SYNAPPS="\${EPICS_ROOT}/synApps"
 export SUPPORT="\${SYNAPPS}/support"
 export PATH="\${PATH}:\${SUPPORT}/utils"
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 cd ${EPICS_ROOT}
 wget https://raw.githubusercontent.com/EPICS-synApps/support/${HASH}/assemble_synApps.sh
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 cat > ./.edit_assemble_synApps.sh << EOF
 #!/bin/bash
 
@@ -425,9 +422,25 @@ done
 
 sed -i s:'git submodule update ADSimDetector':'git submodule update ADSimDetector\ngit submodule update ADURL\ngit submodule update pvaDriver':g assemble_synApps.sh
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+bash ./.edit_assemble_synApps.sh 2>&1 | tee edit_assemble.log
+
+bash ./assemble_synApps.sh 2>&1 | tee assemble.log
+
+cd ${SUPPORT}
+
+# ADSupport needs to use master branch
+pushd ${AREA_DETECTOR}/ADSupport
+git checkout master
+git pull
+# # AREA_DETECTOR, too
+# cd ..
+# git checkout master
+# git pull
+popd
+
+
 cat > ./.edit_area_detector.sh << EOF
 #!/bin/bash
 
@@ -472,23 +485,9 @@ sed -i s:'#dbLoadRecords("NDPva':'dbLoadRecords("NDPva':g   commonPlugins.cmd
 sed -i s:'#startPVAServer':'startPVAServer':g               commonPlugins.cmd
 popd
 EOF
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-bash ./.edit_assemble_synApps.sh 2>&1 | tee edit_assemble.log
 
-bash ./assemble_synApps.sh 2>&1 | tee assemble.log
-
-cd ${SUPPORT}
-
-# ADSupport needs to use master branch
-pushd ${AREA_DETECTOR}/ADSupport
-git checkout master
-git pull
-# AREA_DETECTOR, too
-cd ..
-git checkout master
-git pull
-popd
+bash ./.edit_area_detector.sh 2>&1 | tee edit_area_detector.log
 
 make -j4 release rebuild 2>&1 | tee build.log
 echo "# --- Building XXX IOC ---" 2>&1 | tee -a build.log
@@ -513,6 +512,7 @@ ln -s ./opi extensions
 # sudo apt-file update
 # apt-file search "libXm.a"
 
+cd ./opi
 sed -i \
     s:'MOTIF_LIB=/usr/lib64':'MOTIF_LIB=/usr/lib/x86_64-linux-gnu/':g \
     configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64
@@ -520,7 +520,7 @@ sed -i \
     s:'X11_LIB=/usr/lib64':'X11_LIB=/usr/lib/x86_64-linux-gnu/':g \
     configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 cat >> ~/.bash_aliases << EOF
 export EPICS_EXT=\${EPICS_ROOT}/opi
 export EPICS_EXT_BIN=\${EPICS_EXT}/bin/\${EPICS_HOST_ARCH}
@@ -532,7 +532,7 @@ export EPICS_EXT_BIN=${EPICS_EXT}/bin/${EPICS_HOST_ARCH}
 export EPICS_EXT_LIB=${EPICS_EXT}/lib/${EPICS_HOST_ARCH}
 export PATH=${PATH}:${EPICS_EXT_BIN}
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ```
 
 ### MEDM
@@ -541,6 +541,11 @@ MEDM is available from GitHub.  It needs various out of date packages.
 Notably, `libXp` is [now obsolete and not available in modern Ubuntu repositories.](https://askubuntu.com/questions/1318350/i-cannot-find-the-library-libxp-so-6-for-ubuntu-20-04)  Download it from Debian Jessie repository and install by terminal.
 
 ```sh
+# This command will bring pop-ups that require a human to respond
+sudo apt install -y \
+    xfonts-traditional \
+    xfonts-terminus
+
 cd ${EPICS_EXT}/src
 git clone https://github.com/epics-extensions/medm
 
@@ -554,35 +559,37 @@ make -j4  2>&1 | tee build.log
 
 # fonts
 cd ${EPICS_EXT}
+# ! MEDM widget font aliases
+# !
+# ! add to /usr/X11R6/lib/X11/fonts/misc/fonts.alias
+# !     or /usr/share/fonts/X11/misc/fonts.alias
+# !
 cat > ./medm_fonts.alias << EOF
-! MEDM widget font aliases
-!
-! add to /usr/X11R6/lib/X11/fonts/misc/fonts.alias
-!     or /usr/share/fonts/X11/misc/fonts.alias
-!
-widgetDM_4	5x7
-widgetDM_6	widgetDM_4
-widgetDM_8	5x8
-widgetDM_10	widgetDM_8
-widgetDM_12	6x10
-widgetDM_14	6x12
-widgetDM_16	7x14
-widgetDM_18	widgetDM_16
-widgetDM_20	8x16
-widgetDM_22	widgetDM_20
-widgetDM_24	10x20
-widgetDM_30	widgetDM_24
-widgetDM_36	12x24
-widgetDM_40	widgetDM_36
-widgetDM_48	widgetDM_40
-widgetDM_60	widgetDM_48
+
+widgetDM_4 5x7
+widgetDM_6 widgetDM_4
+widgetDM_8 5x8
+widgetDM_10 widgetDM_8
+widgetDM_12 6x10
+widgetDM_14 6x12
+widgetDM_16 7x14
+widgetDM_18 widgetDM_16
+widgetDM_20 8x16
+widgetDM_22 widgetDM_20
+widgetDM_24 10x20
+widgetDM_30 widgetDM_24
+widgetDM_36 12x24
+widgetDM_40 widgetDM_36
+widgetDM_48 widgetDM_40
+widgetDM_60 widgetDM_48
 EOF
 
-cat \
-    /usr/share/fonts/X11/misc/fonts.alias \
-    ./medm_fonts.alias > \
-    /tmp/fonts.alias
-sudo cp /tmp/fonts.alias /usr/share/fonts/X11/misc/fonts.alias
+# run these steps from the root account
+sudo su
+cp /usr/share/fonts/X11/misc/fonts.alias{,.original}
+cat ${EPICS_EXT}/fonts.alias >> /usr/share/fonts/X11/misc/fonts.alias
+xset fp rehash
+exit
 ```
 
 ### Qt5 library, Qt designer, & Qwt library
@@ -663,8 +670,8 @@ export QTCONTROLS_LIBS=`pwd`/caQtDM_Binaries
 export CAQTDM_COLLECT=`pwd`/caQtDM_Binaries
 export QTBASE=\${QTCONTROLS_LIBS}
 
-export QTDM_LIBINSTALL=\${EPICSEXTENSIONS}/lib/\${EPICS_HOST_ARCH}
 export QTDM_BININSTALL=\${EPICSEXTENSIONS}/bin/\${EPICS_HOST_ARCH}
+export QTDM_LIBINSTALL=\${EPICSEXTENSIONS}/lib/\${EPICS_HOST_ARCH}
 
 mkdir -p \${QTDM_BININSTALL}
 mkdir -p \${QTDM_LIBINSTALL}
@@ -685,7 +692,7 @@ bash ./caQtDM_BuildAll 2>&1 | tee -a build.log
 bash ./caQtDM_Install 2>&1 | tee -a install.log
 
 cat >> ~/.bash_aliases << EOF
-export QT_PLUGIN_PATH=${EPICS_EXT}/lib/linux-x86_64
+export QT_PLUGIN_PATH=\${EPICS_EXT}/lib/\${EPICS_HOST_ARCH}
 EOF
 ```
 
@@ -712,23 +719,10 @@ EOF
 chmod +x ./start_iocs.sh
 ```
 
-TODO: need a cron job (& script) to launch the IOCs on bootup
-
-**Reboot the VM**
-
-To allow the user account to start the EPICS IOCs in docker, it is necessary
-to either logout and log back in again or restart the VM.
-
-```sh
-sudo /sbin/shutdown -r now
-```
-
 ### MongoDB
 
 ```sh
 sudo apt-get install -y mongodb
-
-# TODO: intake YAML configuration file
 ```
 
 ### Python
@@ -738,16 +732,16 @@ mkdir -p ~/Apps
 cd ~/Downloads
 wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/Apps/miniconda3
+source ~/Apps/miniconda3/bin/activate
+conda init
 ```
 
 ### Conda environment
 
 ```sh
-cd ~/Apps
+cd ~/Downloads
 wget https://raw.githubusercontent.com/BCDA-APS/use_bluesky/main/install/environment_2021_1.yml
-source ~/Apps/miniconda3/bin/activate
-conda init
-conda env create -f ~/Apps/environment_2021_1.yml
+conda env create -f ~/Downloads/environment_2021_1.yml
 conda env list
 
 cat >> ~/.bash_aliases << EOF
@@ -761,4 +755,37 @@ EOF
 ```sh
 cd ~
 git clone https://github.com/BCDA-APS/bluesky_instrument_training ./bluesky
+
+mkdir -p ~/.local/share/intake
+cat >> ~/.local/share/intake/training.yml << EOF
+# file: training.yml
+# purpose: Configuration file to connect Bluesky databroker with MongoDB
+# For 2021-03 Python Training at APS
+
+# Copy to: ~/.local/share/intake/training.yml
+# Create subdirectories as needed
+
+sources:
+  training:
+    args:
+      asset_registry_db: mongodb://localhost:27017/training-bluesky
+      metadatastore_db: mongodb://localhost:27017/training-bluesky
+    driver: bluesky-mongo-normalized-catalog
+EOF
+
+sed -i s:'class_2021_03':'training':g ~/bluesky/instrument/framework/initialize.py
+```
+
+TODO: launch the IOCs, as needed, from the [instrument
+package](https://github.com/prjemian/ipython-poof/blob/main/instrument/iocs/check_iocs.py)
+
+TODO: configure starter for this environment, et al.
+
+## Reboot
+
+To allow the user account to start the EPICS IOCs in docker, it is necessary
+to either logout and log back in again or restart the VM.
+
+```sh
+sudo /sbin/shutdown -r now
 ```
