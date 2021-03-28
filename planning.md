@@ -90,9 +90,13 @@ sudo apt-get update  -y && sudo apt-get upgrade -y
 sudo apt-get install -y nano vim
 ```
 
-It might be necessary to add code to `~/.bashrc` to call `~/.bash_aliases` since some distributions do not include this part:
+Now, proceed to build or extend `~/.bash_aliases`.
+It might be necessary to add code to `~/.bashrc` to call
+`~/.bash_aliases` since some distributions do not include this part:
 
 ```sh
+if [ "$(grep bash_aliases ~/.bashrc)" == "" ]; then
+echo Adding call to ~/.bash_aliases from ~/.bashrc
 cat >> ~/.bashrc << EOF
 # - - - - - - - - -
 # Alias definitions.
@@ -104,10 +108,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 EOF
+fi
 
-Now, proceed to build or extend `~/.bash_aliases`:
-
-```sh
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 cat >> ~/.bash_aliases << EOF
 export EDITOR=nano
