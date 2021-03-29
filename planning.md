@@ -6,8 +6,12 @@ and development related to APS-U.
 
 - [Preparation of VM](#preparation-of-vm)
   - [VirtualBox VM](#virtualbox-vm)
-  - [First steps after operating system installation](#first-steps-after-operating-system-installation)
-  - [Install Editors](#install-editors)
+  - [Prepare the operating system installation](#prepare-the-operating-system-installation)
+    - [Optional](#optional)
+    - [Install the VBox Guest Additions](#install-the-vbox-guest-additions)
+    - [Restart](#restart)
+    - [Update OS](#update-os)
+    - [Install Editors](#install-editors)
   - [EPICS base](#epics-base)
     - [Preparation](#preparation)
     - [Environment variables](#environment-variables)
@@ -25,7 +29,7 @@ and development related to APS-U.
     - [Python](#python)
     - [Conda environment](#conda-environment)
     - [`instrument` package](#instrument-package)
-  - [Reboot](#reboot)
+  - [Restart](#restart-1)
 
 ## VirtualBox VM
 
@@ -62,13 +66,13 @@ Installation proceeds to completion.
 2. Unmount the installation disk from (virtual) Optical Drive: *Devices* menu: *Optical Drives*: remove disk from virtual drive
 3. Press `Enter` key to restart
 
-## First steps after operating system installation
+## Prepare the operating system installation
 
-**Optional**
+### Optional
 
 Complete the steps suggested by the welcome wizard
 
-**Install the VBox Guest Additions**
+### Install the VBox Guest Additions
 
 1. *Devices* menu: *Insert Guest Additions CD Image*
 2. Open the *VBox_GAs...* folder
@@ -78,13 +82,13 @@ Complete the steps suggested by the welcome wizard
 
 - Deactivate screen lock from screen saver (since VM host policies cover that security aspect)
 
-Restart
+### Restart
 
 ```sh
 sudo /sbin/shutdown -r now
 ```
 
-**Update OS**
+### Update OS
 
 After installing the Ubuntu-derivative operating, this command updates
 the OS from a command-line terminal.  Start such a terminal from the
@@ -97,7 +101,7 @@ Desktop by the pressing this combination of keys at the same time:
 sudo apt-get update  -y && sudo apt-get upgrade -y
 ```
 
-## Install Editors
+### Install Editors
 
 ```sh
 sudo apt-get install -y nano vim geany
@@ -833,7 +837,7 @@ Configure starter for this environment.
 cp ~/bluesky/blueskyStarter.sh ~/bin
 ```
 
-## Reboot
+## Restart
 
 To allow the user account to start the EPICS IOCs in docker, it is necessary
 to either logout and log back in again or restart the VM.
