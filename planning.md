@@ -64,15 +64,32 @@ Installation proceeds to completion.
 
 ## First steps after operating system installation
 
-TODO: complete the steps suggested by the welcome wizard
+**Optional**
 
-TODO: install the VBox Guest Additions then restart
+Complete the steps suggested by the welcome wizard
 
-- *Devices* menu: *Shared Clipboard*: *Bidirectional** Deactivate screen lock from screen saver (since the VM's host policies
-  can cover that security aspect)
+**Install the VBox Guest Additions**
+
+1. *Devices* menu: *Insert Guest Additions CD Image*
+2. Open the *VBox_GAs...* folder
+3. Run `autorun.sh` (if it does not autorun)
+4. *Devices* menu: *Optical Drives*: *Remove disk from virtual drive*
+5. *Devices* menu: *Shared Clipboard*: *Bidirectional**
+
+- Deactivate screen lock from screen saver (since VM host policies cover that security aspect)
+
+Restart
+
+```sh
+sudo /sbin/shutdown -r now
+```
+
+**Update OS**
 
 After installing the Ubuntu-derivative operating, this command updates
-the OS from a command-line terminal.  Start such a terminal from the Desktop by the pressing this combination of keys at the same time: `<ctrl><alt>T`
+the OS from a command-line terminal.  Start such a terminal from the
+Desktop by the pressing this combination of keys at the same time:
+`<ctrl><alt>T`
 
 (Use this command any time the OS needs additional update.)
 
@@ -83,7 +100,7 @@ sudo apt-get update  -y && sudo apt-get upgrade -y
 ## Install Editors
 
 ```sh
-sudo apt-get install -y nano vim
+sudo apt-get install -y nano vim geany
 ```
 
 Now, proceed to build or extend `~/.bash_aliases`.
@@ -111,31 +128,6 @@ cat >> ~/.bash_aliases << EOF
 export EDITOR=nano
 EOF
 ```
-
-<!--
-Install VSCode GUI editor
-
-```sh
-cd ~/Downloads/
-# FIXME: how to download latest version?
-# web browser to https://code.visualstudio.com/#alt-downloads
-# and pick linux 64bit .tar.gz
-# wget ...url?.../
-# example:  code-stable-x64-1615806628.tar.gz
-export CODE_ARCHIVE=$(ls -1 code*.gz | sort | tail -1)
-cd ~
-mkdir -p bin Apps
-cd Apps/
-tar xzf ~/Downloads/${CODE_ARCHIVE}
-cd ../bin
-ln -s ../Apps/VSCode-linux-x64/bin/code ./
-
-cat >> ~/.bash_aliases << EOF
-export PATH=${HOME}/bin:\${PATH}
-EOF
-
-```
- -->
 
 ## EPICS base
 
@@ -746,7 +738,7 @@ conda env list
 
 cat >> ~/.bash_aliases << EOF
 export BLUESKY_ENV=bluesky_2021_1
-alias become_bluesky='conda activate ${BLUESKY_ENV}'
+alias become_bluesky='conda activate \${BLUESKY_ENV}'
 EOF
 ```
 
@@ -776,10 +768,70 @@ EOF
 sed -i s:'class_2021_03':'training':g ~/bluesky/instrument/framework/initialize.py
 ```
 
-TODO: launch the IOCs, as needed, from the [instrument
-package](https://github.com/prjemian/ipython-poof/blob/main/instrument/iocs/check_iocs.py)
+Launch the soft IOCs, as needed, when the *instrument* package is started.
 
-TODO: configure starter for this environment, et al.
+```sh
+cd ~/bluesky/instrument
+mkdir ./iocs
+touch ./iocs/__init__.py
+cat > ./iocs/check_iocs.py << EOF
+"""
+check that our EPICS soft IOCs are running
+"""
+
+__all__ = []
+
+from ..session_logs import logger
+
+logger.info(__file__)
+
+import epics
+import logging
+import os
+
+GP_IOC_PREFIX = os.environ.get("GP_IOC_PREFIX", "gp:")
+
+up = epics.caget(f"{GP_IOC_PREFIX}:UPTIME", timeout=1)
+if up is None:
+    logger.info("EPICS IOCs not running.  Starting them now...")
+    start_ioc_script = os.path.join(
+        os.environ["HOME"], "bin", "start_iocs.sh",
+    )
+    os.system(start_ioc_script)
+    logger.debug("IOCs started")
+else:
+    logger.info("EPICS IOCs ready...")
+EOF
+
+sed -i s:'import mpl':'import mpl\n\nfrom .iocs import check_iocs':g ./collection.py
+```
+
+Configure IPython
+
+```sh
+export IPYTHON_DIR=${HOME}/.ipython-bluesky
+cat >> ~/.bash_aliases << EOF
+export IPYTHON_DIR=${IPYTHON_DIR}
+EOF
+
+conda activate ${BLUESKY_ENV}
+ipython profile create --ipython-dir=${IPYTHON_DIR} --profile=bluesky
+cat > ${IPYTHON_DIR}/profile_bluesky/startup/run_instrument.py << EOF
+"start bluesky in IPython session"
+
+import os
+import sys
+sys.path.append(os.path.join(os.environ["HOME"], "bluesky"))
+
+from instrument.collection import *
+EOF
+```
+
+Configure starter for this environment.
+
+```sh
+cp ~/bluesky/blueskyStarter.sh ~/bin
+```
 
 ## Reboot
 
