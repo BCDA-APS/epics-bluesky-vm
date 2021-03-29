@@ -9,7 +9,7 @@ and development related to APS-U.
   - [Prepare the operating system installation](#prepare-the-operating-system-installation)
     - [Optional](#optional)
     - [Install the VBox Guest Additions](#install-the-vbox-guest-additions)
-    - [Restart](#restart)
+    - [Restart after Installing Guest Additions](#restart-after-installing-guest-additions)
     - [Update OS](#update-os)
     - [Install Editors](#install-editors)
   - [EPICS base](#epics-base)
@@ -29,7 +29,7 @@ and development related to APS-U.
     - [Python](#python)
     - [Conda environment](#conda-environment)
     - [`instrument` package](#instrument-package)
-  - [Restart](#restart-1)
+  - [Restart after All Installations](#restart-after-all-installations)
 
 ## VirtualBox VM
 
@@ -82,7 +82,7 @@ Complete the steps suggested by the welcome wizard
 
 - Deactivate screen lock from screen saver (since VM host policies cover that security aspect)
 
-### Restart
+### Restart after Installing Guest Additions
 
 ```sh
 sudo /sbin/shutdown -r now
@@ -740,8 +740,9 @@ wget https://raw.githubusercontent.com/BCDA-APS/use_bluesky/main/install/environ
 conda env create -f ~/Downloads/environment_2021_1.yml
 conda env list
 
-cat >> ~/.bash_aliases << EOF
 export BLUESKY_ENV=bluesky_2021_1
+cat >> ~/.bash_aliases << EOF
+export BLUESKY_ENV=${BLUESKY_ENV}
 alias become_bluesky='conda activate \${BLUESKY_ENV}'
 EOF
 ```
@@ -837,7 +838,7 @@ Configure starter for this environment.
 cp ~/bluesky/blueskyStarter.sh ~/bin
 ```
 
-## Restart
+## Restart after All Installations
 
 To allow the user account to start the EPICS IOCs in docker, it is necessary
 to either logout and log back in again or restart the VM.
