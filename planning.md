@@ -583,7 +583,7 @@ EOF
 # run these steps from the root account
 sudo su
 cp /usr/share/fonts/X11/misc/fonts.alias{,.original}
-cat ${EPICS_EXT}/fonts.alias >> /usr/share/fonts/X11/misc/fonts.alias
+cat ${EPICS_EXT}/medm_fonts.alias >> /usr/share/fonts/X11/misc/fonts.alias
 xset fp rehash
 exit
 ```
