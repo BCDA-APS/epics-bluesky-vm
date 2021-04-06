@@ -6,6 +6,7 @@ sudo apt install -y \
     build-essential \
     libfontconfig1 \
     libglu1-mesa-dev \
+    libpython3.8-dev \
     libqt5svg5 \
     libqt5svg5-dev \
     libqt5x11extras5-dev \

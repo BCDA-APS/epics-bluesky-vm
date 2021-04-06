@@ -74,7 +74,8 @@ sed -i s:'read -p ':'# read -p ':g ./caQtDM_BuildAll
 sed -i s:'read -p ':'# read -p ':g ./caQtDM_CleanAll
 sed -i s:'read -p ':'# read -p ':g ./caQtDM_Install
 
-sudo apt install -y libpython3.8-dev
+# pending: https://github.com/caqtdm/caqtdm/issues/56
+sed -i s:'caQtDM_Lib.depends += caQtDM_Parsers':'# caQtDM_Lib.depends += caQtDM_Parsers':g ./all.pro
 
 bash ./caQtDM_BuildAll 2>&1 | tee -a build.log
 bash ./caQtDM_Install 2>&1 | tee -a install.log
