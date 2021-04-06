@@ -26,8 +26,8 @@ echo Building for EPICS host architecture: ${EPICS_HOST_ARCH}
 
 make -j4 all CFLAGS="-fPIC" CXXFLAGS="-fPIC"  2>&1 | tee build.log
 
-cd ..
 # env vars for ~/.bash_aliases
+cd ${EPICS_ROOT}
 cat > ./setup_base_env.sh << EOF
 # -----------------------------
 # file: setup_base_env.sh
