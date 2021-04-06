@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: 04b_setup_epics_extensions.sh
+# file: 03b_setup_epics_extensions.sh
 
 if [ "" == "${EPICS_ROOT}" ]; then
     echo EPICS_ROOT not defined.

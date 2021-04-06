@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: 04a_epics_extensions_prerequisites.sh
+# file: 03a_epics_extensions_prerequisites.sh
 
 sudo apt install -y \
     libxt-dev libxft-dev \

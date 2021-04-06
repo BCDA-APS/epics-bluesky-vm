@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: setup_bash_aliases.sh
+# file: 01b_setup_bash_aliases.sh
 
 if [ "$(grep bash_aliases ~/.bashrc)" == "" ]; then
 echo Adding call to ~/.bash_aliases from ~/.bashrc
@@ -16,3 +16,9 @@ if [ -f ~/.bash_aliases ]; then
 fi
 EOF
 fi
+
+mkdir -p ~/bin
+cat >> ~/.bash_aliases << EOF
+# - - - - - - - - -
+export PATH=~/bin:\${PATH}
+EOF

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: build_epics_base.sh
+# file: 02b_build_epics_base.sh
 
 export EPICS_ROOT=/usr/local/epics
 export EPICS_BASE_NAME=base-7.0.5

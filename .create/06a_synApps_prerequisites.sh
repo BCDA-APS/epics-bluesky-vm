@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: epics_base_prerequisites.sh
+# file: 06a_synApps_prerequisites.sh
 #
 # Packages needed for building EPICS synApps.
 

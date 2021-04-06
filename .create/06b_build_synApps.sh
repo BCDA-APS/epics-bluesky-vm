@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: 03b_build_synApps.sh
+# file: 06b_build_synApps.sh
 
 if [ "" == "${EPICS_ROOT}" ]; then
     echo EPICS_ROOT not defined.

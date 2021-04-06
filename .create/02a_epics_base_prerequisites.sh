@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: epics_base_prerequisites.sh
+# file: 02a_epics_base_prerequisites.sh
 #
 # Packages needed for building EPICS base.
 # Includes editor tools.

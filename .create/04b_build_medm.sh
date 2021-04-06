@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# file: 05b_build_medm.sh
+# file: 04b_build_medm.sh
 
 if [ "" == "${EPICS_EXT}" ]; then
     echo EPICS_ROOT not defined.
