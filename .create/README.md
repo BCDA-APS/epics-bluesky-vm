@@ -19,6 +19,7 @@ and development related to APS-U.
     - [Python](#python)
     - [Conda environment](#conda-environment)
     - [`instrument` package](#instrument-package)
+  - [Update ~/.bash_aliases](#update-bash_aliases)
   - [Restart after All Installations](#restart-after-all-installations)
 
 ## VirtualBox VM
@@ -161,6 +162,16 @@ Configure IPython (the interactive console Python session to be used).
 ```sh
 ./09d_configure_ipython.sh
 ```
+
+## Update ~/.bash_aliases
+
+Gather all the environment setup scripts and add their contents 
+to `~/.bash_aliases`:
+
+```sh
+./09e_setup_bash_aliases.sh
+```
+
 
 ## Restart after All Installations
 

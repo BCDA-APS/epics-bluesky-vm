@@ -10,6 +10,7 @@ fi
 export IPYTHON_DIR=${HOME}/.ipython-bluesky
 cat >> ~/.bash_aliases << EOF
 # - - - - - - - - - - - - - - - -
+# IPython directory
 export IPYTHON_DIR=${IPYTHON_DIR}
 EOF
 

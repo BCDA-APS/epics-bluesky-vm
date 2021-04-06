@@ -12,7 +12,7 @@ cat >> ${BLUESKY_CATALOG_DIR}/training.yml << EOF
 # - - - - - - - - - - - - - - - -
 # file: training.yml
 # purpose: Configuration file to connect Bluesky databroker with MongoDB
-# For 2021-03 Python Training at APS
+# For Bluesky Python Training at APS
 
 # Copy to: ~/.local/share/intake/training.yml
 # Create subdirectories as needed
