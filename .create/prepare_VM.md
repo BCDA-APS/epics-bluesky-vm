@@ -13,6 +13,7 @@ All necessary software will be installed into this VM.
     - [Optional](#optional)
     - [Install the VBox Guest Additions](#install-the-vbox-guest-additions)
     - [Restart after Installing Guest Additions](#restart-after-installing-guest-additions)
+    - [Remove unused packages](#remove-unused-packages)
     - [Update OS](#update-os)
     - [Prepare account](#prepare-account)
 
@@ -84,6 +85,33 @@ Complete the steps suggested by the welcome wizard
 
 ```sh
 sudo /sbin/shutdown -r now
+```
+
+### Remove unused packages
+
+To clear unuse3d space from the VM image, delete
+LibreOffice and Thunderbird.
+
+```sh
+sudo apt remove -y \
+    libreoffice-base \
+    libreoffice-base-core \
+    libreoffice-calc \
+    libreoffice-writer \
+    libreoffice-core \
+    libreoffice-common \
+    libreoffice-draw \
+    libreoffice-gnome \
+    libreoffice-gtk3 \
+    libreoffice-help-common \
+    libreoffice-impress \
+    libreoffice-java-common \
+    libreoffice-math \
+    libreoffice-style-colibre \
+    libreoffice-style-tango \
+    libreoffice-writer \
+    thunderbird \
+    thunderbird-gnome-support
 ```
 
 ### Update OS
