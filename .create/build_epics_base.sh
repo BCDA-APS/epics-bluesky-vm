@@ -6,9 +6,14 @@ export EPICS_ROOT=/usr/local/epics
 export EPICS_BASE_NAME=base-7.0.5
 
 if [ ! -d "${EPICS_ROOT}" ]; then
-    echo First, create directory ${EPICS_ROOT} and make it writeable by ${USER}
+    echo First, create directory ${EPICS_ROOT}
+    echo suggestion: sudo mkdir ${EPICS_ROOT}
+    echo ... then make it writeable by ${USER}
+    echo suggestion: sudo chown ${USER}:${USER} ${EPICS_ROOT}
     exit 1
 fi
+
+
 
 cd ~/Downloads
 wget https://epics.anl.gov/download/base/${EPICS_BASE_NAME}.tar.gz

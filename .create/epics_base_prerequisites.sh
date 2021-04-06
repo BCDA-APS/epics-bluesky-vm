@@ -9,4 +9,14 @@ sudo apt-get install -y \
     apt-utils \
     build-essential \
     libreadline-dev \
-    screen
+    screen \
+    nano \
+    vim \
+    geany
+
+cat >> ~/setup_editor_env.sh << EOF
+# -----------------------------
+# file: setup_editor_env.sh
+# add to ~/.bash_aliases
+export EDITOR=nano
+EOF
