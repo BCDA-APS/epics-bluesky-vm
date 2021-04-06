@@ -1,6 +1,13 @@
 #!/bin/bash
 
-# file: build_caqtdm.sh
+# file: 05b_build_caqtdm.sh
+
+if [ "" == "${EPICS_EXT}" ]; then
+    echo EPICS_ROOT not defined.
+    echo perhaps?  source /usr/local/epics/setup_base_env.sh
+    echo perhaps?  source /usr/local/epics/setup_extensions_env.sh
+    exit 1
+fi
 
 cd ${EPICS_EXT}/src
 
@@ -72,6 +79,11 @@ sudo apt install -y libpython3.8-dev
 bash ./caQtDM_BuildAll 2>&1 | tee -a build.log
 bash ./caQtDM_Install 2>&1 | tee -a install.log
 
-cat >> ~/.bash_aliases << EOF
+cd ${EPICS_ROOT}
+cat > ./setup_caqtdm_env.sh << EOF
+# -----------------------------
+# file: setup_caqtdm_env.sh
+# add to ~/.bash_aliases
 export QT_PLUGIN_PATH=\${EPICS_EXT}/lib/\${EPICS_HOST_ARCH}
 EOF
+chmod +x ./setup_caqtdm_env.sh
