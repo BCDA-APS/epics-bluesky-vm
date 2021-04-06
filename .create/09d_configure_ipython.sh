@@ -26,6 +26,3 @@ sys.path.append(os.path.join(os.environ["HOME"], "bluesky"))
 
 from instrument.collection import *
 EOF
-
-# Configure starter for this environment.
-cp ~/bluesky/blueskyStarter.sh ~/bin
