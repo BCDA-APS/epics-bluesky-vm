@@ -13,8 +13,6 @@ if [ ! -d "${EPICS_ROOT}" ]; then
     exit 1
 fi
 
-
-
 cd ~/Downloads
 wget https://epics.anl.gov/download/base/${EPICS_BASE_NAME}.tar.gz
 cd ${EPICS_ROOT}
