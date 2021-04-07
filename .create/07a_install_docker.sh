@@ -18,6 +18,7 @@ cat >> ./start_iocs.sh << EOF
 #
 #  gp : general purpose IOC - motors, scaler, calcs, sscans, ...
 #  ad : ADSimDetector - simulated 2-D area detector, 1k x 1k
+
 ~/bin/start_xxx.sh gp
 ~/bin/start_adsim.sh ad
 EOF
