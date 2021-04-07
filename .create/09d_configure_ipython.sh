@@ -16,4 +16,4 @@ EOF
 
 conda activate ${BLUESKY_ENVIRONMENT}
 ipython profile create --ipython-dir=${IPYTHON_DIR} --profile=bluesky
-cp ~/blusky/run_instrument.py ${IPYTHON_DIR}/profile_bluesky/startup/
+cp ~/bluesky/run_instrument.py ${IPYTHON_DIR}/profile_bluesky/startup/
