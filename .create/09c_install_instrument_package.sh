@@ -50,6 +50,8 @@ import epics
 import os
 import subprocess
 
+GP_IOC_PREFIX = os.environ.get("GP_IOC_PREFIX", "gp:")
+
 def run_command(command):
     with subprocess.Popen(command,
                           stdout=subprocess.PIPE,
@@ -61,14 +63,17 @@ def run_command(command):
         if len(errs.strip()) > 0:
             logger.error(errs.strip().decode())
 
-up = epics.caget("sky:UPTIME", timeout=1)
+up = epics.caget(f"{GP_IOC_PREFIX}:UPTIME", timeout=1)
 if up is None:
     home = os.environ["HOME"]
-    logger.info("EPICS sky IOCs not running.  Starting them now...")
+    logger.info(
+      "EPICS %s IOC not running.  Starting now...",
+      GP_IOC_PREFIX
+    )
     run_command(f"{home}/bin/start_iocs.sh")
-    logger.debug("sky IOCs started")
+    logger.debug("IOCs started")
 else:
-    logger.info("EPICS sky IOCs ready...")
+    logger.info("EPICS IOCs ready...")
 
 up = epics.caget("IOC:float1.NAME", timeout=1)
 if up is None:
