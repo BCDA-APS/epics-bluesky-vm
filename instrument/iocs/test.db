@@ -1,0 +1,10 @@
+# file: test.db
+# purpose: test bluesky/ophyd put & get with waveform record
+#
+# start IOC:   softIoc -d test.db
+
+record(waveform, "string_waveform") {
+  field(DTYP, "Soft Channel")
+  field(NELM, "256")
+  field(FTVL, "CHAR")
+}
