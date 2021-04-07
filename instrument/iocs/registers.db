@@ -1,0 +1,55 @@
+
+# file: registers.db
+#
+# purpose: R/W IOC variables for general use
+# usage:   softIoc -d registers.db
+
+record(ao, "IOC:float1")
+record(ao, "IOC:float2")
+record(ao, "IOC:float3")
+record(ao, "IOC:float4")
+record(ao, "IOC:float5")
+
+record(bo, "IOC:bit1")
+record(bo, "IOC:bit2")
+record(bo, "IOC:bit3")
+record(bo, "IOC:bit4")
+record(bo, "IOC:bit5")
+
+record(longout, "IOC:int1")
+record(longout, "IOC:int2")
+record(longout, "IOC:int3")
+record(longout, "IOC:int4")
+record(longout, "IOC:int5")
+
+record(stringout, "IOC:text1")
+record(stringout, "IOC:text2")
+record(stringout, "IOC:text3")
+record(stringout, "IOC:text4")
+record(stringout, "IOC:text5")
+
+record(waveform, "IOC:textwave1") {
+  field(DTYP, "Soft Channel")
+  field(NELM, "2048")
+  field(FTVL, "CHAR")
+}
+record(waveform, "IOC:textwave2") {
+  field(DTYP, "Soft Channel")
+  field(NELM, "2048")
+  field(FTVL, "CHAR")
+}
+record(waveform, "IOC:textwave3") {
+  field(DTYP, "Soft Channel")
+  field(NELM, "2048")
+  field(FTVL, "CHAR")
+}
+record(waveform, "IOC:textwave4") {
+  field(DTYP, "Soft Channel")
+  field(NELM, "2048")
+  field(FTVL, "CHAR")
+}
+record(waveform, "IOC:textwave5") {
+  field(DTYP, "Soft Channel")
+  field(NELM, "2048")
+  field(FTVL, "CHAR")
+}

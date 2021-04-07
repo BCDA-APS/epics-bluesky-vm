@@ -13,10 +13,10 @@ sed -i s:'- sphinx-rtd-theme':'# - sphinx-rtd-theme':g ~/Downloads/environment_2
 conda env create -f ~/Downloads/environment_2021_1.yml
 conda env list
 
-export BLUESKY_ENV=bluesky_2021_1
+export BLUESKY_ENVIRONMENT=bluesky_2021_1
 cat >> ~/.bash_aliases << EOF
 # -----------------------------
 # bluesky environment
-export BLUESKY_ENV=${BLUESKY_ENV}
-alias become_bluesky='conda activate \${BLUESKY_ENV}'
+export BLUESKY_ENVIRONMENT=${BLUESKY_ENVIRONMENT}
+alias become_bluesky='conda activate \${BLUESKY_ENVIRONMENT}'
 EOF
