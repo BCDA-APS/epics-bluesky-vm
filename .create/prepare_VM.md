@@ -36,11 +36,13 @@ Name | EPICS-Bluesky-Simulator
 Type | Linux
 Version | Ubuntu (64-bit)
 RAM | 2048 MB
+CPU | 1 - 4 (only need 1, 4 makes the builds go much faster)
+Graphics RAM | 16-32 MB (16MB is OK)
 Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
 Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
 VDI Size | 30 GB
 Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
-Your name | APS-UU EPICS beam line Bluesky Simulator
+Your name | APS-U EPICS beam line Bluesky Simulator
 Computer's name | apsu-sim
 user | `apsu`
 password | TODO:
@@ -122,6 +124,16 @@ sudo apt remove -y \
     thunderbird-gnome-support
 ```
 
+It helps to clone these instructions from Github so they can be
+executed within the new VM.
+
+```sh
+sudo apt install -y git
+
+git clone https://github.com/BCDA-APS/epics-bluesky-vm ~/bluesky
+cd ~/bluesky/.create
+```
+
 ### Update OS
 
 After installing the Ubuntu-derivative operating, this command updates
@@ -138,16 +150,6 @@ sudo apt-get update  -y && sudo apt-get upgrade -y
 See `./01a_update_os.sh`
 
 ### Prepare account
-
-It helps to clone these instructions from Github so they can be
-executed within the new VM.
-
-```sh
-sudo apt install -y git
-
-git clone https://github.com/BCDA-APS/epics-bluesky-vm ~/bluesky
-cd ~/bluesky/.create
-```
 
 Make sure `~/.bash_aliases` is called from `~/.bashrc`.  Make
 sure that `~/bin` exists and is added to `PATH`.
