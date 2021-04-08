@@ -152,7 +152,7 @@ add a Python installation that we can customize, using
 
 Install the Bluesky Framework into a [custom conda 
 environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).  This
-will make package updates much simpler, espcially when the entire framework 
+will make package updates much simpler, especially when the entire framework 
 needs a periodic refresh.
 
 ```sh
