@@ -8,7 +8,7 @@ export BLUESKY_CATALOG_DIR=~/.local/share/intake
 export INST=~/bluesky/instrument
 
 mkdir -p ${BLUESKY_CATALOG_DIR}
-cp ./training.yml ${BLUESKY_CATALOG_DIR}/training.yml
+cp ~/bluesky/.create/training.yml ${BLUESKY_CATALOG_DIR}/training.yml
 
 sed -i s:'class_2021_03':'training':g ${INST}/framework/initialize.py
 
