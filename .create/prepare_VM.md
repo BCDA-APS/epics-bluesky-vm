@@ -40,8 +40,8 @@ Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
 Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
 VDI Size | 30 GB
 Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
-Your name | APSU EPICS beam line Bluesky Simulator
-Computer's name | apsu-beamline-simulator
+Your name | APS-UU EPICS beam line Bluesky Simulator
+Computer's name | apsu-sim
 user | `apsu`
 password | TODO:
 Login automatically | Yes
