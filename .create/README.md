@@ -36,7 +36,7 @@ installs.
 ./all_steps.sh 2>&1 | tee all_steps.log
 ```
 
-Instead of running `./all_steps.sh`, continue through each
+**Or**, instead of running `./all_steps.sh`, continue through each
 of the following steps.
 
 ## EPICS base
