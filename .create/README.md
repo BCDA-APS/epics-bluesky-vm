@@ -32,6 +32,10 @@ the installation steps from `./02a_epics_base_prerequisites.sh`
 be prompted for the password for additional software
 installs.
 
+```sh
+./all_steps.sh 2>&1 | tee all_steps.log
+```
+
 Instead of running `./all_steps.sh`, continue through each
 of the following steps.
 
