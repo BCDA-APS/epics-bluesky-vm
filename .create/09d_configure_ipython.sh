@@ -4,7 +4,8 @@
 
 if [ "" == "${BLUESKY_ENVIRONMENT}" ]; then
     echo BLUESKY_ENVIRONMENT not defined.
-    exit 1
+    echo calling: source ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 export IPYTHON_DIR=${HOME}/.ipython-bluesky
@@ -14,7 +15,7 @@ cat >> ~/.bash_aliases << EOF
 export IPYTHON_DIR=${IPYTHON_DIR}
 EOF
 
-source ${CONDA_PREFIX}/bin/activate
+source ~/Apps/miniconda3/bin/activate
 conda activate ${BLUESKY_ENVIRONMENT}
 
 ipython profile create --ipython-dir=${IPYTHON_DIR} --profile=bluesky
