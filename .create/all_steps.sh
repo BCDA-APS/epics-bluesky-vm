@@ -4,8 +4,11 @@
 
 # Note that the password will be requested occasionally.
 
-./01a_update_os.sh
-./01b_setup_account.sh
+# First steps run when setting up the VM.
+# ./01a_update_os.sh
+# ./01b_setup_account.sh
+
+# Full installation of the software stack.
 ./02a_epics_base_prerequisites.sh
 ./02b_build_epics_base.sh
 ./03a_epics_extensions_prerequisites.sh

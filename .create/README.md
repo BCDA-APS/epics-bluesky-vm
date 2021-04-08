@@ -26,6 +26,12 @@ and development related to APS-U.
 
 Prepare the virtual machine following this [procedure](./prepare_VM.md).
 
+The `./all_steps.sh` shell script has been created to run all
+the installation steps from `./02a_epics_base_prerequisites.sh`
+(EPICS base installation) and onwards.  At times, the user will
+be prompted for the password for additional software
+installs.  Otherwise, continue through the following steps.
+
 ## EPICS base
 
 Install packages needed for building EPICS base.  Includes editor tools.
@@ -150,9 +156,9 @@ add a Python installation that we can customize, using
 
 ### Conda environment
 
-Install the Bluesky Framework into a [custom conda 
+Install the Bluesky Framework into a [custom conda
 environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).  This
-will make package updates much simpler, especially when the entire framework 
+will make package updates much simpler, especially when the entire framework
 needs a periodic refresh.
 
 ```sh
@@ -175,7 +181,7 @@ Configure IPython (the interactive console Python session to be used).
 
 ## Update ~/.bash_aliases
 
-Gather all the environment setup scripts and add their contents 
+Gather all the environment setup scripts and add their contents
 to `~/.bash_aliases`:
 
 ```sh
