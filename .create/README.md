@@ -30,7 +30,10 @@ The `./all_steps.sh` shell script has been created to run all
 the installation steps from `./02a_epics_base_prerequisites.sh`
 (EPICS base installation) and onwards.  At times, the user will
 be prompted for the password for additional software
-installs.  Otherwise, continue through the following steps.
+installs.
+
+Instead of running `./all_steps.sh`, continue through each
+of the following steps.
 
 ## EPICS base
 
