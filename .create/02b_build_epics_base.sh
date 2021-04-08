@@ -6,11 +6,10 @@ export EPICS_ROOT=/usr/local/epics
 export EPICS_BASE_NAME=base-7.0.5
 
 if [ ! -d "${EPICS_ROOT}" ]; then
-    echo First, create directory ${EPICS_ROOT}
-    echo suggestion: sudo mkdir ${EPICS_ROOT}
-    echo ... then make it writeable by ${USER}
-    echo suggestion: sudo chown ${USER}:${USER} ${EPICS_ROOT}
-    exit 1
+    echo Create directory ${EPICS_ROOT}
+    sudo mkdir ${EPICS_ROOT}
+    echo Make it writeable by ${USER}
+    sudo chown ${USER}:${USER} ${EPICS_ROOT}
 fi
 
 cd ~/Downloads

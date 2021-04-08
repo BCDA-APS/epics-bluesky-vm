@@ -4,8 +4,7 @@
 
 if [ "" == "${EPICS_ROOT}" ]; then
     echo EPICS_ROOT not defined.
-    echo perhaps?  source /usr/local/epics/setup_base_env.sh
-    exit 1
+    source /usr/local/epics/setup_base_env.sh
 fi
 
 export SUPPORT="${EPICS_ROOT}/synApps/support"

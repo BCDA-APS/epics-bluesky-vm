@@ -5,6 +5,7 @@
 if [ "$(grep bash_aliases ~/.bashrc)" == "" ]; then
 echo Adding call to ~/.bash_aliases from ~/.bashrc
 cat >> ~/.bashrc << EOF
+
 # - - - - - - - - -
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -19,6 +20,7 @@ fi
 
 mkdir -p ~/bin
 cat >> ~/.bash_aliases << EOF
+
 # - - - - - - - - -
 export PATH=~/bin:\${PATH}
 EOF

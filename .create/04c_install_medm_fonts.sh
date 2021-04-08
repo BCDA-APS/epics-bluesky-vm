@@ -4,9 +4,8 @@
 
 if [ "" == "${EPICS_EXT}" ]; then
     echo EPICS_ROOT not defined.
-    echo perhaps?  source /usr/local/epics/setup_base_env.sh
-    echo perhaps?  source /usr/local/epics/setup_extensions_env.sh
-    exit 1
+    source /usr/local/epics/setup_base_env.sh
+    source /usr/local/epics/setup_extensions_env.sh
 fi
 
 # fonts
