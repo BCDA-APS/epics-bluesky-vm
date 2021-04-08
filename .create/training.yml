@@ -1,0 +1,13 @@
+# file: training.yml
+# purpose: Configuration file to connect Bluesky databroker with MongoDB
+# For Bluesky Python Training at APS
+
+# Copy to: ~/.local/share/intake/training.yml
+# Create subdirectories as needed
+
+sources:
+  training:
+    args:
+      asset_registry_db: mongodb://localhost:27017/training-bluesky
+      metadatastore_db: mongodb://localhost:27017/training-bluesky
+    driver: bluesky-mongo-normalized-catalog

@@ -37,6 +37,9 @@ Install packages needed for building EPICS base.  Includes editor tools.
 Download and build EPICS base:
 
 ```sh
+sudo mkdir /usr/local/epics
+sudo chown ${USER}:${USER} /usr/local/epics
+
 ./02b_build_epics_base.sh
 ```
 
@@ -49,6 +52,7 @@ subdirectory.  These procedures prepare that subdirectory:
 
 ```sh
 ./03a_epics_extensions_prerequisites.sh
+source /usr/local/epics/setup_base_env.sh
 ./03b_setup_epics_extensions.sh
 ```
 
@@ -63,6 +67,12 @@ definitions.
 
 ```sh
 ./04a_medm_prerequisites.sh
+```
+
+Answer yes to the two questions that appear during this step.  Then, proceed...
+
+```sh
+source /usr/local/epics/setup_extensions_env.sh
 ./04b_build_medm.sh
 ./04c_install_medm_fonts.sh
 ```
@@ -142,7 +152,7 @@ add a Python installation that we can customize, using
 
 Install the Bluesky Framework into a [custom conda 
 environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).  This
-will make package updates much simpler, espcially when the entire framework 
+will make package updates much simpler, especially when the entire framework 
 needs a periodic refresh.
 
 ```sh

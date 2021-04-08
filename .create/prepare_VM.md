@@ -40,8 +40,8 @@ Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
 Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
 VDI Size | 30 GB
 Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
-Your name | APSU EPICS beam line Bluesky Simulator
-Computer's name | apsu-beamline-simulator
+Your name | APS-UU EPICS beam line Bluesky Simulator
+Computer's name | apsu-sim
 user | `apsu`
 password | TODO:
 Login automatically | Yes
@@ -76,20 +76,28 @@ Complete the steps suggested by the welcome wizard
 1. *Devices* menu: *Insert Guest Additions CD Image*
 2. Open the *VBox_GAs...* folder
 3. Run `autorun.sh` (if it does not autorun)
-4. *Devices* menu: *Optical Drives*: *Remove disk from virtual drive*
-5. *Devices* menu: *Shared Clipboard*: *Bidirectional**
+4. After that completes, press *Enter* to finish the installation.
+5. Right click the CD icon on the Desktop and select *Eject*.
+6. *Devices* menu: *Optical Drives*: *Remove disk from virtual drive*
+7. *Devices* menu: *Shared Clipboard*: *Bidirectional*
+8. *Devices* menu: *Drag and Drop*: *Bidirectional*
 
-- Deactivate screen lock from screen saver (since VM host policies cover that security aspect)
+- Deactivate screen lock from screen saver (since VM host policies cover that
+  security aspect) and change time from 5 minutes to ~30 minutes (or so).
 
 ### Restart after Installing Guest Additions
+
+Use the GUI to restart the VM or open a terminal and type:
 
 ```sh
 sudo /sbin/shutdown -r now
 ```
 
+Once restarted, relocate & resize the VM window as desired.
+
 ### Remove unused packages
 
-To clear unuse3d space from the VM image, delete
+To clear unused space from the VM image, delete
 LibreOffice and Thunderbird.
 
 ```sh
@@ -130,6 +138,16 @@ sudo apt-get update  -y && sudo apt-get upgrade -y
 See `./01a_update_os.sh`
 
 ### Prepare account
+
+It helps to clone these instructions from Github so they can be
+executed within the new VM.
+
+```sh
+sudo apt install -y git
+
+git clone https://github.com/BCDA-APS/epics-bluesky-vm ~/bluesky
+cd ~/bluesky/.create
+```
 
 Make sure `~/.bash_aliases` is called from `~/.bashrc`.  Make
 sure that `~/bin` exists and is added to `PATH`.

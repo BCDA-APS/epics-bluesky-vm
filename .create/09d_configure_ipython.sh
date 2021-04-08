@@ -14,15 +14,8 @@ cat >> ~/.bash_aliases << EOF
 export IPYTHON_DIR=${IPYTHON_DIR}
 EOF
 
+source ${CONDA_PREFIX}/bin/activate
 conda activate ${BLUESKY_ENVIRONMENT}
+
 ipython profile create --ipython-dir=${IPYTHON_DIR} --profile=bluesky
-cat > ${IPYTHON_DIR}/profile_bluesky/startup/run_instrument.py << EOF
-# - - - - - - - - - - - - - - - -
-"start bluesky in IPython session"
-
-import os
-import sys
-sys.path.append(os.path.join(os.environ["HOME"], "bluesky"))
-
-from instrument.collection import *
-EOF
+cp ~/bluesky/run_instrument.py ${IPYTHON_DIR}/profile_bluesky/startup/
