@@ -11,7 +11,7 @@ sed -i s:'- super-state-machine':'# - super-state-machine':g ~/Downloads/environ
 sed -i s:'- sphinx-rtd-theme':'# - sphinx-rtd-theme':g ~/Downloads/environment_2021_1.yml
 sed -i s:'- happi':'# - happi':g ~/Downloads/environment_2021_1.yml
 
-source ${CONDA_PREFIX}/bin/activate
+source ~/Apps/miniconda3/bin/activate
 conda env create -f ~/Downloads/environment_2021_1.yml
 conda env list
 
