@@ -64,8 +64,7 @@ Login automatically | Yes
 Installation proceeds to completion.
 
 1. Restart Now
-2. Unmount the installation disk from (virtual) Optical Drive: *Devices* menu: *Optical Drives*: remove disk from virtual drive
-3. Press `Enter` key to restart
+2. Press `Enter` key to restart
 
 ### Optional
 
