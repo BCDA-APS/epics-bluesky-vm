@@ -9,10 +9,10 @@ All necessary software will be installed into this VM.
   - [Prerequisites](#prerequisites)
   - [Installation Parameters](#installation-parameters)
   - [Create the VM](#create-the-vm)
-  - [Prepare the operating system installation](#prepare-the-operating-system-installation)
     - [Optional](#optional)
     - [Install the VBox Guest Additions](#install-the-vbox-guest-additions)
     - [Restart after Installing Guest Additions](#restart-after-installing-guest-additions)
+  - [Prepare the operating system installation](#prepare-the-operating-system-installation)
     - [Remove unused packages](#remove-unused-packages)
     - [Update OS](#update-os)
     - [Prepare account](#prepare-account)
@@ -67,8 +67,6 @@ Installation proceeds to completion.
 2. Unmount the installation disk from (virtual) Optical Drive: *Devices* menu: *Optical Drives*: remove disk from virtual drive
 3. Press `Enter` key to restart
 
-## Prepare the operating system installation
-
 ### Optional
 
 Complete the steps suggested by the welcome wizard
@@ -96,6 +94,8 @@ sudo /sbin/shutdown -r now
 ```
 
 Once restarted, relocate & resize the VM window as desired.
+
+## Prepare the operating system installation
 
 ### Remove unused packages
 
