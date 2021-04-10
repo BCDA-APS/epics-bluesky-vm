@@ -138,6 +138,25 @@ These two EPICS IOCs comprise a virtual *instrument* to be operated by Bluesky.
 
 ### Docker
 
+Install Docker and the scripts necessary to manage the soft IOCs
+(including automatically start IOCs from the user account, from a cron
+task, when VM is started).
+
+Per the cron task, the docker containers will be checked every 2
+minutes.
+
+```cron
+# auto-start the EPICS soft IOCs in docker containers
+*/2 * * * *  bash /home/apsu/bin/ioc_manager.sh checkup 2>&1 > /dev/null
+```
+
+If either (or both) are not running, the soft IOCs will be
+restarted.  (This restart is a *hard* restart which starts each IOC with
+its default settings.  No autosave is used with this restart.  A soft
+reset would involve issuing the command in each IOC's docker container.
+That is not implemented yet.)  The cron task logs into
+`/tmp/ioc_manager.sh`.
+
 ```sh
 ./07a_install_docker.sh
 ```
