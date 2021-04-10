@@ -12,14 +12,10 @@ wget ${url}/n4_areaDetector/start_adsim.sh
 wget ${url}/n3_synApps/remove_container.sh
 chmod +x start_xxx.sh start_adsim.sh remove_container.sh
 
-cat >> ./start_iocs.sh << EOF
-#!/bin/sh
-# start the EPICS soft IOCs
-#
-#  gp : general purpose IOC - motors, scaler, calcs, sscans, ...
-#  ad : ADSimDetector - simulated 2-D area detector, 1k x 1k
+cp ~/bluesky/.create/start_iocs.sh ~/bin
 
-~/bin/start_xxx.sh gp
-~/bin/start_adsim.sh ad
-EOF
-chmod +x ./start_iocs.sh
+# install cron job
+cp ~/bluesky/.create/ioc_manager.sh ~/bin
+(crontab -l; echo "";) | crontab -
+(crontab -l; echo "# auto-start the EPICS soft IOCs in docker containers";) | crontab -
+(crontab -l; echo "*/2 * * * *  bash ${HOME}/bin/ioc_manager.sh checkup 2>&1 > /dev/null";) | crontab -
