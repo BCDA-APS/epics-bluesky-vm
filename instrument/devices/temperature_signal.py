@@ -86,6 +86,9 @@ class MyPvPositioner(PVPositioner):
         self.readback.subscribe(self.cb_readback)
         self.setpoint.subscribe(self.cb_setpoint)
 
+        # Make the default alias for the readback the name of the device itself.
+        self.readback.name = self.name
+
     def setup_temperature(
         self,
         setpoint=None,
