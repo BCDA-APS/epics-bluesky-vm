@@ -26,7 +26,7 @@ TODO ...
 Jupyter notebooks provide specific training for use of the Bluesky Framework
 for data acquisition and analysis.
 
-* [Bluesky *Cheat Sheet*](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/command_review.ipynb)
+* [Bluesky Command Review](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/command_review.ipynb)
 * [count with a scaler](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/count_scaler.ipynb)
 * [scan with motor and scaler](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/basic-motor-scaler-scan.ipynb)
 * [lineup on a 1-D peak](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/lineup_1d_peak.ipynb)
