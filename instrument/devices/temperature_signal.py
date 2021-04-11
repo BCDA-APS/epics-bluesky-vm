@@ -25,19 +25,19 @@ GP_IOC_PREFIX = os.environ.get("GP_IOC_PREFIX", "gp:")
 
 class MyPvPositioner(PVPositioner):
     # positioner
-    setpoint = Component(EpicsSignal, ".B")
-    readback = Component(EpicsSignal, ".VAL")  # THIS readback IS writable!
-    done = Component(Signal, value=True)
+    setpoint = Component(EpicsSignal, ".B", kind="hinted")
+    readback = Component(EpicsSignal, ".VAL", kind="hinted")  # THIS readback IS writable!
+    done = Component(Signal, value=True, kind="omitted")
     done_value = True
 
     # additional, for the simulator
-    calculation = Component(EpicsSignal, ".CALC")
-    description = Component(EpicsSignal, ".DESC")
-    max_change = Component(EpicsSignal, ".D")
-    noise = Component(EpicsSignal, ".C")
-    previous_value_pv = Component(EpicsSignal, ".INAN")
-    scanning_rate = Component(EpicsSignal, ".SCAN")
-    tolerance = Component(EpicsSignal, ".E")
+    calculation = Component(EpicsSignal, ".CALC", kind="config")
+    description = Component(EpicsSignal, ".DESC", kind="config")
+    max_change = Component(EpicsSignal, ".D", kind="config")
+    noise = Component(EpicsSignal, ".C", kind="config")
+    previous_value_pv = Component(EpicsSignal, ".INAN", kind="config")
+    scanning_rate = Component(EpicsSignal, ".SCAN", kind="config")
+    tolerance = Component(EpicsSignal, ".E", kind="config")
     report_dmov_changes = Component(Signal, value=True, kind="omitted")
 
     def cb_readback(self, *args, **kwargs):
@@ -85,6 +85,9 @@ class MyPvPositioner(PVPositioner):
         )
         self.readback.subscribe(self.cb_readback)
         self.setpoint.subscribe(self.cb_setpoint)
+
+        # Make the default alias for the readback the name of the device itself.
+        self.readback.name = self.name
 
     def setup_temperature(
         self,
