@@ -1,6 +1,10 @@
 # Test EPICS base installation
 
-TODO: need the environment scripts
+Configure the bash shell's environment variables:
+
+```sh
+source ${EPICS_ROOT}/setup_base_env.sh
+```
 
 ## test EPICS base installation
 

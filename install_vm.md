@@ -48,7 +48,7 @@ Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
 Your name | APS-U EPICS beam line Bluesky Simulator
 Computer's name | apsu-sim
 user | `apsu`
-password | TODO:
+password | (see the instructions below)
 Login automatically | Yes
 
 To get the password for the `apsu` account, 
