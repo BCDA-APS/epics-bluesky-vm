@@ -25,7 +25,8 @@ to create a VirtualBox virtual machine image.
 
 ## Installation
 
-TODO
+Follow these [instructions](install_vm.md) to install *EPICS-Bluesky-Simulator*,
+including *Oracle VM VirtualBox Manager*.
 
 ## Bluesky Training
 

@@ -30,23 +30,9 @@ It is helpful to give the VM image its own CPU core.
 
 ## Installation Parameters
 
-term | value
-:--- | :---
-Name | EPICS-Bluesky-Simulator
-Type | Linux
-Version | Ubuntu (64-bit)
-RAM | 2048 MB
-CPU | 1 - 4 (only need 1, 4 makes the builds go much faster)
-Graphics RAM | 16-32 MB (16MB is OK)
-Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
-Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
-VDI Size | 30 GB
-Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
-Your name | APS-U EPICS beam line Bluesky Simulator
-Computer's name | apsu-sim
-user | `apsu`
-password | TODO:
-Login automatically | Yes
+Use the same parameters described in the [user installation instructions](../install_vm.md).
+
+Store the user and password in the *Settings*..*Description* as noted.
 
 ## Create the VM
 
