@@ -12,3 +12,4 @@ cat ${EPICS_ROOT}/setup_base_env.sh  >> ~/.bash_aliases
 cat ${EPICS_ROOT}/setup_caqtdm_env.sh  >> ~/.bash_aliases
 cat ${EPICS_ROOT}/setup_extensions_env.sh  >> ~/.bash_aliases
 cat ${EPICS_ROOT}/setup_synApps_env.sh  >> ~/.bash_aliases
+cat ${HOME}/setup_editor_env.sh  >> ~/.bash_aliases
