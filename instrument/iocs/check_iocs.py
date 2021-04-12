@@ -31,12 +31,12 @@ if up is None:
 else:
     logger.info("EPICS IOCs ready...")
 
-up = epics.caget("IOC:float1.NAME", timeout=1)
-if up is None:
-    logger.info("EPICS registers IOC not running.  Starting now...")
-    path = os.path.abspath(os.path.dirname(__file__))
-    run_command(os.path.join(path, "in_screen.sh"))
-    logger.debug(f"registers IOC started")
-    run_command("screen -ls".split())
-else:
-    logger.info("EPICS registers IOC ready...")
+# up = epics.caget("IOC:float1.NAME", timeout=1)
+# if up is None:
+#     logger.info("EPICS registers IOC not running.  Starting now...")
+#     path = os.path.abspath(os.path.dirname(__file__))
+#     run_command(os.path.join(path, "in_screen.sh"))
+#     logger.debug(f"registers IOC started")
+#     run_command("screen -ls".split())
+# else:
+#     logger.info("EPICS registers IOC ready...")
