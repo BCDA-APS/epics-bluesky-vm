@@ -16,7 +16,7 @@ cp ~/bluesky/.create/start_iocs.sh ~/bin
 ./start_iocs.sh
 
 ln -s /tmp/docker_ioc/iocad/iocSimDetector/start_caQtDM_adsim ~/bin/start_caQtDM_ad
-ln -s ${HOME}/bluesky/.create/start_MEDM_ad ~/bin/start_MEDM_ad
+ln -s ${HOME}/bluesky/.create/start_MEDM_ad.sh ~/bin/start_MEDM_ad
 
 ln -s /tmp/docker_ioc/iocgp/xxx-R6-1/start_caQtDM_xxx ~/bin/start_caQtDM_gp
 ln -s /tmp/docker_ioc/iocgp/xxx-R6-1/start_MEDM_xxx ~/bin/start_MEDM_gp
