@@ -23,11 +23,16 @@ to create a VirtualBox virtual machine image.
 * Bluesky: [2021-04-11](https://blueskyproject.io/)
 * Jupyter: [3.0.11](http://jupyterlab.io/)
 
+## Installation
+
+TODO
+
 ## Bluesky Training
 
 Jupyter notebooks provide specific training for use of the Bluesky Framework
 for data acquisition and analysis.
 
+* [Bluesky *Hello, World!*](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_instrument_training/blob/main/hello_world.ipynb)
 * [About the Instrument Simulation](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/describe_instrument.ipynb)
 * [Bluesky Command Review](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/command_review.ipynb)
 * [count with a scaler](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/count_scaler.ipynb)
@@ -63,3 +68,14 @@ The terminal console window will look similar to this view:
 In a minute or less, a web browser should open with a view, such as:
 
 ![Jupyter Lab](resources/jupyter-lab-server.png "Jupyter Lab in the terminal")
+
+## References
+
+name | URL
+--- | ---
+Bluesky Framework | https://blueskyproject.io/
+bluesky | https://blueskyproject.io/bluesky
+ophyd | https://blueskyproject.io/ophyd
+databroker | https://blueskyproject.io/databroker
+apstools | https://apstools.readthedocs.io/
+APS instruments | https://github.com/BCDA-APS/use_bluesky/wiki/
