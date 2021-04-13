@@ -24,7 +24,7 @@ It is helpful to give the VM image its own CPU core.
 
 ## Download EPICS-Bluesky-Simulator VM image
 
-The VM is about 10GB in size.  Download from 
+The VM is about 8.4GB in size.  Download from 
 https://box.com/url/to/be/provided
 
 In the *Oracle VM VirtualBox Manager* main window, choose *Import Appliance* from the *File* menu and select the downloaded file.
