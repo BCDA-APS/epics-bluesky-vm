@@ -28,10 +28,9 @@ to create a VirtualBox virtual machine image.
 Follow these [instructions](install_vm.md) to install *EPICS-Bluesky-Simulator*,
 including *Oracle VM VirtualBox Manager*.
 
-## Bluesky Training
+## Bluesky Training Notebooks
 
-Jupyter notebooks provide specific training for use of the Bluesky Framework
-for data acquisition and analysis.
+Jupyter notebooks provide specific training for use of the Bluesky Framework for data acquisition and analysis.
 
 * [Bluesky *Hello, World!*](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_instrument_training/blob/main/hello_world.ipynb)
 * [About the Instrument Simulation](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/describe_instrument.ipynb)
