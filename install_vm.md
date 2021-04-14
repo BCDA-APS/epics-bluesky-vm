@@ -25,9 +25,10 @@ It is helpful to give the VM image its own CPU core.
 ## Download EPICS-Bluesky-Simulator VM image
 
 The VM image file (`2021-04-13-epics-bluesky-vm.ova`) is about 7.9GB in
-size.  Download the latest `.ova` file from 
-[Box.com directory](https://anl.box.com/s/dq5xa4b9g7tf4x9tlftyauqdbv9kb6ev)
-(anyone with this link may view and download from this directory).
+size.  Download the latest `.ova` file from the download directory on 
+ANL's Box (anyone with this link may view and download from this directory):
+
+Downloads:  https://anl.box.com/s/dq5xa4b9g7tf4x9tlftyauqdbv9kb6ev
 
 In the *Oracle VM VirtualBox Manager* main window, choose *Import Appliance* from the *File* menu and select the downloaded file.
 
