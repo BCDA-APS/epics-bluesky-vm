@@ -17,14 +17,14 @@ You will need:
   1. *VirtualBox platform package* for your host computer OS
   2. *Oracle VM VirtualBox Extension Pack*
 * 2 GB RAM reserved for the training VM to use
-* 10 GB hard disk space for the downloaded VM image file (can delete the image once installed)
-* 20-40 GB hard disk space for the VM image to use
+* 8 GB hard disk space for the downloaded VM image file (can delete the image once installed)
+* 20-30 GB hard disk space for the VM image to use
 
 It is helpful to give the VM image its own CPU core.
 
 ## Download EPICS-Bluesky-Simulator VM image
 
-The VM image file (`2021-04-13-epics-bluesky-vm.ova`) is about 8.4GB in
+The VM image file (`2021-04-13-epics-bluesky-vm.ova`) is about 7.9GB in
 size.  Download the latest `.ova` file from 
 [Box.com directory](https://anl.box.com/s/dq5xa4b9g7tf4x9tlftyauqdbv9kb6ev)
 (anyone with this link may view and download from this directory).
