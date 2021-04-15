@@ -15,10 +15,10 @@ to create a VirtualBox virtual machine image.
 * OS: [Linux Mint 20.1](https://www.linuxmint.com/)
 * EPICS
   * base: [7.0.5](https://epics.anl.gov/base/R7-0/5.php)
-  * MEDM: [3.1.16](https://github.com/epics-extensions/medm)
-  * caQtDM: [4.3.0+](https://github.com/caqtdm/caqtdm/)
   * synApps: [6.2](https://www.aps.anl.gov/BCDA/synApps)
   * AreaDetector: [3.10](https://github.com/areaDetector/areaDetector/releases)
+  * MEDM: [3.1.16](https://github.com/epics-extensions/medm)
+  * caQtDM: [4.3.0+](https://github.com/caqtdm/caqtdm/)
 * Python: [Miniconda 4.9.2](https://www.anaconda.com/)
 * Bluesky: [2021-04-11](https://blueskyproject.io/)
 * Jupyter: [3.0.11](http://jupyterlab.io/)
