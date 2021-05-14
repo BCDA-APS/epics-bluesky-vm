@@ -1,5 +1,7 @@
 # Create the VM
 
+NOTE: This directory has tools to *create* the VM.  *Users* of the VM should look in the parent directory or `~/bin` for user tools.
+
 Install EPICS, synApps,GUIs, Bluesky and related components
 to create an APS beam line simulator for training, education,
 and development related to APS-U.
