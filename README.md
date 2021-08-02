@@ -28,18 +28,17 @@ including *Oracle VM VirtualBox Manager*.
 
 Jupyter notebooks provide specific training for use of the Bluesky Framework for data acquisition and analysis.
 
-* [Bluesky *Hello, World!*](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_instrument_training/blob/main/hello_world.ipynb)
-* [About the Instrument Simulation](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/describe_instrument.ipynb)
-* [Bluesky Command Review](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/command_review.ipynb)
-* [count with a scaler](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/count_scaler.ipynb)
-* [scan with motor and scaler](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/basic-motor-scaler-scan.ipynb)
-* [lineup on a 1-D peak](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/lineup_1d_peak.ipynb)
-* [temperature](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/watch_temperature.ipynb)
-* [write a custom measurement plan](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/custom_plan.ipynb)
-
-* [area detector](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/locate_image_peak.ipynb)
-* [analyze image data later](https://nbviewer.jupyter.org/github/BCDA-APS/epics-bluesky-vm/blob/main/after_measurement.ipynb)
-
+* [Bluesky *Hello, World!*](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/bluesky/hello_world.ipynb)
+* [About the Instrument Simulation](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/describe_instrument.ipynb)
+* [Bluesky Command Review](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/command_review.ipynb)
+* [count with a scaler](https://github.com/BCDA-APS/bluesky_training/blob/main/basic_scaler.ipynb)  <!-- nbviewer does not render yet -->
+* [move a motor](https://github.com/BCDA-APS/bluesky_training/blob/main/basic_motor.ipynb)  <!-- nbviewer does not render yet -->
+* [scan with motor and scaler](https://github.com/BCDA-APS/bluesky_training/blob/main/basic_step_scan.ipynb)  <!-- nbviewer does not render yet -->
+* [lineup on a 1-D peak](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/lineup_1d_peak.ipynb)
+* [temperature](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/watch_temperature.ipynb)
+* [write a custom measurement plan](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/bluesky/custom_plan.ipynb)
+* [area detector](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/locate_image_peak.ipynb)
+* [analyze image data later](https://nbviewer.jupyter.org/github/BCDA-APS/bluesky_training/blob/main/after_measurement.ipynb)
 * [analyze data extracted from another Bluesky](./external_data/README.md)
 
 ## Start Jupyter Lab
