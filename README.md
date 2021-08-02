@@ -6,11 +6,12 @@
 
 Simulate a beam line using EPICS IOCs, GUIs, Bluesky and related components.
 
-This repository contains the [instructions](./.create/README.md) and resources
-to create a VirtualBox virtual machine image.
+## Installation
+
+Follow these [instructions](install_vm.md) to install *EPICS-Bluesky-Simulator*,
+including *Oracle VM VirtualBox Manager*.
 
 # About this VM
-
 
 * OS: [Linux Mint 20.1](https://www.linuxmint.com/)
 * EPICS
@@ -22,11 +23,6 @@ to create a VirtualBox virtual machine image.
 * Python: [Miniconda 4.9.2](https://www.anaconda.com/)
 * Bluesky: [2021-04-11](https://blueskyproject.io/)
 * Jupyter: [3.0.11](http://jupyterlab.io/)
-
-## Installation
-
-Follow these [instructions](install_vm.md) to install *EPICS-Bluesky-Simulator*,
-including *Oracle VM VirtualBox Manager*.
 
 ## Bluesky Training Notebooks
 
@@ -68,6 +64,11 @@ The terminal console window will look similar to this view:
 In a minute or less, a web browser should open with a view, such as:
 
 ![Jupyter Lab](resources/jupyter-lab-server.png "Jupyter Lab in the terminal")
+
+## Developers: (Re)Create the VM
+
+This repository contains the [instructions](./.create/README.md) and resources
+to create a VirtualBox virtual machine image.
 
 ## References
 
