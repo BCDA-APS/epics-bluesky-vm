@@ -24,7 +24,7 @@ It is helpful to give the VM image its own CPU core.
 
 ## Download EPICS-Bluesky-Simulator VM image
 
-The VM image file (`2021-04-13-epics-bluesky-vm.ova`) is about 7.9GB in
+The VM image file (`2021-08-02-epics-bluesky-vm.ova`) is about 12.8GB in
 size.  Download the latest `.ova` file from the download directory on 
 ANL's Box (anyone with this link may view and download from this directory):
 
@@ -45,11 +45,11 @@ Name | EPICS-Bluesky-Simulator
 Type | Linux
 Version | Ubuntu (64-bit)
 RAM | 2048 MB
-CPU | 1
+CPU | 2  (change to 1 if must)
 Graphics RAM | 16 MB (16MB is OK)
 Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
 Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
-VDI Size | 30 GB
+VDI Size | 40 GB
 Release | Linux Mint 20.1 "Ulyssa" - MATE (64-bit)
 Your name | APS-U EPICS beam line Bluesky Simulator
 Computer's name | apsu-sim
