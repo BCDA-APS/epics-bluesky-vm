@@ -24,9 +24,9 @@ It is helpful to give the VM image its own CPU core.
 
 ## Download EPICS-Bluesky-Simulator VM image
 
-The VM image file (`2021-08-02-epics-bluesky-vm.ova`) is about 12.8GB in
-size.  Download the latest `.ova` file from the download directory on 
-ANL's Box (anyone with this link may view and download from this directory):
+Download the latest `.ova` file (`2021-08-02-epics-bluesky-vm.ova` is about 12.8GB)
+from the download directory on ANL's Box account (anyone with this link may view
+and download from this directory):
 
 Downloads:  https://anl.box.com/s/dq5xa4b9g7tf4x9tlftyauqdbv9kb6ev
 
