@@ -17,8 +17,8 @@ You will need:
   1. *VirtualBox platform package* for your host computer OS
   2. *Oracle VM VirtualBox Extension Pack*
 * 2 GB RAM reserved for the training VM to use
-* 8 GB hard disk space for the downloaded VM image file (can delete the image once installed)
-* 20-30 GB hard disk space for the VM image to use
+* 12 GB hard disk space for the downloaded VM image file (can delete the image once installed)
+* 30 GB hard disk space for the VM image to use
 
 It is helpful to give the VM image its own CPU core.
 
