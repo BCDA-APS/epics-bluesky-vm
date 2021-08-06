@@ -17,8 +17,8 @@ You will need:
   1. *VirtualBox platform package* for your host computer OS
   2. *Oracle VM VirtualBox Extension Pack*
 * 2 GB RAM reserved for the training VM to use
-* 12 GB hard disk space for the downloaded VM image file (can delete the image once installed)
-* 30 GB hard disk space for the VM image to use
+* 10 GB hard disk space for the downloaded VM image file (can delete the image once installed)
+* 40 GB hard disk space for the VM image to use
 
 It is helpful to give the VM image its own CPU core.
 
@@ -44,8 +44,8 @@ term | value
 Name | EPICS-Bluesky-Simulator
 Type | Linux
 Version | Ubuntu (64-bit)
-RAM | 2048 MB
-CPU | 2  (change to 1 if must)
+RAM | 2048 MB (increase if you want)
+CPU | 1  (change to 2 if you want)
 Graphics RAM | 16 MB (16MB is OK)
 Hard disk type | VDI (VirtualBox Disk Image), dynamically allocated
 Download URL | [Linux Mint](https://linuxmint.com/edition.php?id=285)
