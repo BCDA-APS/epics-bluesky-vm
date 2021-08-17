@@ -21,6 +21,13 @@ Special thanks to Troy Lutes, APS IT, for describing these steps.
 `/net/beams/JEMIAN/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2`
 on the APS network.
 
+Assuming you have a `/local` directory available with sufficient free
+space, then copy the (28GB!) disk image from my directory to yours:
+
+```sh
+cp ~jemian/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2 /local/
+```
+
 <details>
 <summary>Conversion steps</summary>
 
