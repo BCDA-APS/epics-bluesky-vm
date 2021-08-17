@@ -21,8 +21,8 @@ Special thanks to Troy Lutes, APS IT, for describing these steps.
 `/net/beams/JEMIAN/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2`
 on the APS network.
 
-Assuming you have a `/local` directory available with sufficient free
-space, then copy the (28GB!) disk image from my directory to yours:
+Assuming you have a `/local` directory (faster access than one of the network mounted drives in yout home directory) available with sufficient free
+space, then copy the (28GB!) disk image from my directory to the directory you choose:
 
 ```sh
 cp ~jemian/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2 /local/
@@ -106,7 +106,7 @@ Create bridge *virtual network* in the virtual machine manager.  Follow
 2. From the *File* menu, choose *New Virtual Machine*.
 3. Select *Import existing disk image* and click the **Forward** button.
 4. Click the **Browse ...** button.
-5. Find the directory with the `.qcow2` disk image and select it.
+5. Find the directory with the `.qcow2` disk image (see above) and select it.
 6. Once selected, select the *OS type* and *Version*, as shown:
 
    ![image selected](completed-Create-new-VM-screen.png)
