@@ -10,6 +10,8 @@ CONTENTS
 
 ## Oracle VM VirtualBox Manager
 
+If you are on a Linux computer on the Advanced Photon Source network, then follow these [special instructions](install_APS/README.md) to run the VM on the QEMU/KVM (`virt-machine`) software available at the APS.
+
 You will need:
 
 * *Oracle VM VirtualBox* software on your host computer: [https://www.virtualbox.org/](https://www.virtualbox.org/)
