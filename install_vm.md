@@ -10,7 +10,10 @@ CONTENTS
 
 ## Oracle VM VirtualBox Manager
 
-If you are on a Linux computer on the Advanced Photon Source network, then follow these [special instructions](install_APS/README.md) to run the VM on the QEMU/KVM (`virt-machine`) software available at the APS.
+**NOTE**: If you are on a Linux computer on the Advanced Photon Source
+network, then follow these [special instructions](install_APS/README.md)
+to run the VM on the [QEMU/KVM](https://wiki.qemu.org/Features/KVM)
+([`virt-manager`](https://virt-manager.org/)) software available at the APS.
 
 You will need:
 
@@ -32,10 +35,11 @@ and download from this directory):
 
 Downloads:  https://anl.box.com/s/dq5xa4b9g7tf4x9tlftyauqdbv9kb6ev
 
-In the *Oracle VM VirtualBox Manager* main window, choose *Import Appliance* from the *File* menu and select the downloaded file.
+In the *Oracle VM VirtualBox Manager* main window, choose *Import
+Appliance* from the *File* menu and select the downloaded file.
 
-Once imported, the main window will show the *EPICS-Bluesky-Simulator* (and any
-other VMs you may have already installed).
+Once imported, the main window will show the *EPICS-Bluesky-Simulator*
+(and any other VMs you may have already installed).
 
 ![Oracle VM VirtualBox Manager window](./resources/vb-manager.png)
 

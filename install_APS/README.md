@@ -2,16 +2,24 @@
 
 *Running OVA on RHEL at the APS*
 
-You can run VirtualBox `.ova` (file virtual machine) VMs with the native Qemu KVM on RHEL.  The `.ova` must first
-be [converted](https://blog.ricosharp.com/posts/2019/Converting-ova-file-to-qcow2) ([more complete article with additional steps](https://access.redhat.com/discussions/4340061))
+You can run VirtualBox `.ova` (file virtual machine) VMs with the native
+QEMU/KVM on RHEL.  The `.ova` must first be
+[converted](https://blog.ricosharp.com/posts/2019/Converting-ova-file-to-qcow2)
+([more complete article with additional
+steps](https://access.redhat.com/discussions/4340061)).
 
-Networking help to [create a network bridge](https://computingforgeeks.com/how-to-create-and-configure-bridge-networking-for-kvm-in-linux/) ([alternative instructions](https://wiki.hackzine.org/sysadmin/kvm-import-ova.html))
+Networking help to [create a network
+bridge](https://computingforgeeks.com/how-to-create-and-configure-bridge-networking-for-kvm-in-linux/)
+([alternative
+instructions](https://wiki.hackzine.org/sysadmin/kvm-import-ova.html))
 
 Special thanks to Troy Lutes, APS IT, for describing these steps.
 
 ## Converting
 
-**NOTE**: You might be able to skip this step if you have access to `/net/beams/JEMIAN/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2` on the APS network.
+**NOTE**: You might be able to skip this step if you have access to
+`/net/beams/JEMIAN/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2`
+on the APS network.
 
 <details>
 <summary>Conversion steps</summary>
@@ -39,7 +47,8 @@ Request APS IT for permission to run KVM on your workstation & account.
 <details>
 <summary>Get permission from IT</summary>
 
-When you do not yet have permission (to connect to `libvirt` and the `qemu:/` system), you will see a screen that looks like this:
+When you do not yet have permission (to connect to `libvirt` and the
+`qemu:/` system), you will see a screen that looks like this:
 
 ![unable to connect -- account needs permissions from IT](20210812-1632-libvert-cannot-connect.png)
 
@@ -62,18 +71,23 @@ libvirtError: authentication unavailable: no polkit agent available to authentic
 
 </details>
 
-If you see this screen (and/or error message), contact your IT support to get membership in the `libvirt` and `qemu` groups.  Once that is made, you'll need to log out and back in to be able to use that membership.
+If you see this screen (and/or error message), contact your IT support
+to get membership in the `libvirt` and `qemu` groups.  Once that is
+made, you'll need to log out and back in to be able to use that
+membership.
 
 </details>
 
 ## Bridge Network
 
-**NOTE**: This step may not be necessary.  The `default` virtual network may be sufficient for this VM.
+**NOTE**: This step may not be necessary.  The `default` virtual network
+may be sufficient for this VM.
 
 <details>
 <summary>Create a bridge network device.</summary>
 
-Create bridge *virtual network* in the virtual machine manager.  Follow [guidance](https://computingforgeeks.com/how-to-create-and-configure-bridge-networking-for-kvm-in-linux/).
+Create bridge *virtual network* in the virtual machine manager.  Follow
+[guidance](https://computingforgeeks.com/how-to-create-and-configure-bridge-networking-for-kvm-in-linux/).
 
 ![bridge network configuration](bridge-network.png)
 
@@ -81,7 +95,7 @@ Create bridge *virtual network* in the virtual machine manager.  Follow [guidanc
 
 ## Import and Run the VM
 
-1. Start `virt-manager` from the command line.
+1. Start [`virt-manager`](https://virt-manager.org/) from the command line.
 2. From the *File* menu, choose *New Virtual Machine*.
 3. Select *Import existing disk image* and click the **Forward** button.
 4. Click the **Browse ...** button.
