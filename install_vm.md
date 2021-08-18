@@ -21,6 +21,9 @@ to run the VM on the [QEMU/KVM](https://wiki.qemu.org/Features/KVM)
 If you are not on a Linux computer at the APS, follow thses instructions
 to set up the Oracle VM VirtualBox Manager.
 
+**NOTE** If you are on the APS VPN, this download will fail at/about 
+10 GB.  Make sure you are not using the APS network to download the file.
+
 You will need:
 
 * *Oracle VM VirtualBox* software on your host computer: [https://www.virtualbox.org/](https://www.virtualbox.org/)
