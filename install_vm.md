@@ -3,17 +3,23 @@
 CONTENTS
 
 - [Installing the VM](#installing-the-vm)
+  - [APS using QEMU KVM](#aps-using-qemu-kvm)
   - [Oracle VM VirtualBox Manager](#oracle-vm-virtualbox-manager)
   - [Download EPICS-Bluesky-Simulator VM image](#download-epics-bluesky-simulator-vm-image)
   - [Installation Parameters](#installation-parameters)
   - [Start the VM](#start-the-vm)
 
-## Oracle VM VirtualBox Manager
+## APS using QEMU KVM
 
-**NOTE**: If you are on a Linux computer on the Advanced Photon Source
+If you are on a Linux computer on the Advanced Photon Source
 network, then follow these [special instructions](install_APS/README.md)
 to run the VM on the [QEMU/KVM](https://wiki.qemu.org/Features/KVM)
 ([`virt-manager`](https://virt-manager.org/)) software available at the APS.
+
+## Oracle VM VirtualBox Manager
+
+If you are not on a Linux computer at the APS, follow thses instructions
+to set up the Oracle VM VirtualBox Manager.
 
 You will need:
 
