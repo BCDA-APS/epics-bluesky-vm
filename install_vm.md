@@ -18,7 +18,7 @@ to run the VM on the [QEMU/KVM](https://wiki.qemu.org/Features/KVM)
 
 ## Oracle VM VirtualBox Manager
 
-If you are not on a Linux computer at the APS, follow thses instructions
+If you are not on a Linux computer at the APS, follow these instructions
 to set up the Oracle VM VirtualBox Manager.
 
 **NOTE** If you are on the APS VPN, this download will fail at/about 
