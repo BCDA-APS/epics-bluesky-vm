@@ -33,7 +33,7 @@ cp ~jemian/Downloads/2021-08-05-epics-bluesky-vm-disk001.qcow2 /local/
 ```
 
 <details>
-<summary>Conversion steps</summary>
+<summary>Conversion steps ONLY if you can't get the .qcow2 file</summary>
 
 1. Expand the `.ova` file (it is an uncompressed `tar` archive file), then convert to *QEMU QCOW* format.
 
