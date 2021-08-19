@@ -95,7 +95,7 @@ membership.
 may be sufficient for this VM.
 
 <details>
-<summary>Create a bridge network device.</summary>
+<summary>Create a bridge network device ONLY if you cannot use the default network.</summary>
 
 Create bridge *virtual network* in the virtual machine manager.  Follow
 [guidance](https://computingforgeeks.com/how-to-create-and-configure-bridge-networking-for-kvm-in-linux/).
