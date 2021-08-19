@@ -2,6 +2,10 @@
 
 *Running OVA on RHEL at the APS*
 
+## Background details
+
+For installation, proceed to the [Converting](#converting) section below.
+
 You can run VirtualBox `.ova` (file virtual machine) VMs with the native
 QEMU/KVM on RHEL.  The `.ova` must first be
 [converted](https://blog.ricosharp.com/posts/2019/Converting-ova-file-to-qcow2)
