@@ -9,17 +9,23 @@ CONTENTS
   - [Installation Parameters](#installation-parameters)
   - [Start the VM](#start-the-vm)
 
-## APS using QEMU KVM
+## APS computers
 
+UPDATE (August 20): It is not certain if running a VM on an APS workstation
+is permitted.  Should it be permitted, instructions will be given here.)
+
+<!--
 If you are on a Linux computer on the Advanced Photon Source
 network, then follow these [special instructions](install_APS/README.md)
 to run the VM on the [QEMU/KVM](https://wiki.qemu.org/Features/KVM)
 ([`virt-manager`](https://virt-manager.org/)) software available at the APS.
+-->
 
 ## Oracle VM VirtualBox Manager
 
-If you are not on a Linux computer at the APS, follow these instructions
-to set up the Oracle VM VirtualBox Manager.
+If you are not on a computer at the APS, follow these instructions
+to set up the Oracle VM VirtualBox Manager on a computer where 
+you have permission to install software.
 
 **NOTE** If you are on the APS VPN, this download will fail at/about 
 10 GB.  Make sure you are not using the APS network to download the file.
