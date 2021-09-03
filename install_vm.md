@@ -1,5 +1,7 @@
 # Installing the VM
 
+NOTE:  The VM was built to run on computers with CPU architecture `x86_64` and will not run on the _Apple Silicon_ CPUs.
+
 CONTENTS
 
 - [Installing the VM](#installing-the-vm)
